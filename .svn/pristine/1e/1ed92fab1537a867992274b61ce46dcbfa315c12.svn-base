@@ -1,0 +1,50 @@
+/* pages/record/record.wxss */
+.head{
+  font-size:30rpx;
+  width: 100%;
+  height: 100rpx;
+  background-color: gainsboro;
+  line-height: 100rpx;
+  text-indent: 30rpx;
+  font-weight: bold;
+}
+.moreshuijing{
+  font-size:30rpx;
+  display: inline;
+  border: none;
+  margin-left: 50rpx;
+  padding: 5rpx 10rpx;
+  font-weight: normal;
+}
+.locklist{
+  font-size:28rpx;
+  margin-top: 30rpx;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.lockitem{
+  margin-left: 50rpx;
+  margin-bottom: 40rpx;
+  width: 650rpx;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+}
+.lockitem .btnview{
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+.lockitembtn{
+  font-size: 28rpx;
+  height: 50rpx;
+  width: 240rpx;
+  border-radius: 70rpx;
+  line-height: 50rpx;
+}

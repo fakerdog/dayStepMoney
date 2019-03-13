@@ -1,0 +1,178 @@
+// pages/withdetail/withdetail.js
+const app = getApp();
+const drawService = require("../../services/drawService.js");
+const utils = require("../../utils/util.js");
+const drawutils = require("../../utils/drawUtil.js");
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    money: Number(0.0000).toFixed(4),
+  },
+
+  allwithdetail: function () {
+    this.setData({
+      allmoney: Number(Math.floor(this.data.money * 100) / 100)
+    })
+  },
+  //点击立即提现的方法
+  towithdetail: function () {
+    this.setData({
+      btnDisabled: 'disabled'
+    });
+    var allmoney = this.data.allmoney;
+    if (typeof (allmoney) == 'undefined') {
+      wx.showModal({
+        title: '提示',
+        content: '请输入提现金额',
+        showCancel: false
+      })
+      this.setData({
+        btnDisabled: ''
+      });
+    } else if (utils.isEmpty(allmoney.toString())) {
+      wx.showModal({
+        title: '提示',
+        content: '请输入提现金额',
+        showCancel: false
+      })
+      this.setData({
+        btnDisabled: ''
+      });
+    } else {
+      if (allmoney < 1) {
+        wx.showModal({
+          title: '提示',
+          content: '最小提现金额为1元',
+          showCancel: false
+        })
+        this.setData({
+          btnDisabled: ''
+        });
+      } else if (allmoney > this.data.money) {
+        wx.showModal({
+          title: '提示',
+          content: '输入值有误',
+          showCancel: false
+        })
+        this.setData({
+          btnDisabled: ''
+        });
+      } else {
+        //符合提现条件
+        drawService.drawCash(Number(Math.floor(this.data.money * 100) / 100) * 100, res => {
+          var errorcode = res.data.data;
+          if (errorcode == 0) {
+            this.setData({
+              money: Number(this.data.money - this.data.allmoney).toFixed(4),
+              allmoney: ''
+            })
+            wx.showModal({
+              title: '提示',
+              content: '提现请求提交成功,资金会在1~3个工作日内直接转入你的微信红包',
+              showCancel: false
+            })
+            this.setData({
+              btnDisabled: ''
+            });
+          } else {
+
+            wx.showModal({
+              title: '提示',
+              content: '提现请求提交失败',
+              showCancel: false
+            })
+            this.setData({
+              btnDisabled: ''
+            });
+          }
+        }, () => {
+          this.setData({
+            btnDisabled: ''
+          });
+        })
+      }
+    }
+  },
+
+  /*键盘输入时触发事件  可以替换原值 赋值操作*/
+  moneyInput: function (e) {
+    var v2 = e.detail.value;
+    var psize;
+    if (parseInt(Number(v2)) == Number(v2)) {
+      psize = 0;
+    } else {
+      psize = v2.toString().split(".")[1].length
+    }
+    if (psize > 2) {
+      v2 = Number(v2).toFixed(2);
+    }
+    this.setData({
+      allmoney: v2
+    });
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    app.getUserInfo(res => {
+      drawService.getDrawGet(res => {
+        this.setData({
+          shuijing: res.data.data.idealMoney,
+          money: Number(res.data.data.money).toFixed(4)
+        })
+      })
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

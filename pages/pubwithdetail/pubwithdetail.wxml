@@ -1,0 +1,73 @@
+<!--pages/pubwithdetail/pubwithdetail.wxml-->
+<view class='promotion-container'>
+
+  <view class='withdetail-head'>
+    <view class='withdetail-head-img'>
+      <open-data style="border-radius:50%;overflow:hidden;display:block;height:140rpx;width:140rpx" type="userAvatarUrl"></open-data>
+    </view>
+    <view class='withdetail-head-ideal'>{{shuijing}}卡币</view>
+    <view class='withdetail-head-money'>{{money}}
+      <label class="draw-suij">元</label>
+    </view>
+  </view>
+
+  <view class='withdetail-con'>
+    <button class='withdetail-button {{btnDisabled}}' bindtap='towithdetail'>立即提现{{smoney}}元</button>
+  </view>
+
+  <view class='withdetail-bottom'towithdetail>
+    <navigator class='withdetail-back' url="/pages/index/index" hover-class="none" open-type='redirect'>
+      <button class="withdetail-back-btn">继续赚钱</button>
+    </navigator>
+  </view>
+
+  <view bindsuccess="tobanner" class='adv-navigate-banner' wx:if="{{bannerObj}}">
+    <view class="banner-view">
+      <image bindtap="tobanner" src='{{bannerObj.image}}' style='height:100px; ' mode="aspectFit"></image>
+    </view>
+  </view>
+</view>
+
+
+<!--蒙层-->
+<view class='mask' wx:if='{{redPackageModal}}'>
+  <view class="modalDlg">
+    <image class="backimg" src="{{modalbackimg}}"></image>
+    <block>
+      <view class='miniicon'>
+        <view class='miniiconitem'>
+          <image style="width: 100%;height: 100%;" src="../../images/myicon.png"></image>
+        </view>
+        <text>x</text>
+        <view class='miniiconitem'>
+          <image style="width: 100%;height: 100%;" src="{{modalObj.image}}"></image>
+        </view>
+      </view>
+      <view class='regbagtext'>
+        <view class="descp1">给你发了一个红包</view>
+        <view class="descp">恭喜发财，大吉大利</view>
+      </view>
+      <view class='btnimg'>
+        <image bindtap="toRedBag" style="width: 100%;height: 100%;" src="../../images/open.png"></image>
+      </view>
+      <view class='popuptext'>
+        <view wx:if="{{modalObj.limit!=-1}}">{{modalfootersecond}}s后自动关闭</view>
+        <view class="closetext" bindtap="toclose">关闭</view>
+      </view>
+    </block>
+  </view>
+</view>
+
+
+<!--保存蒙层-->
+<view class='savemask' wx:if='{{widthdrawFlag}}'>
+  <view class="savemodalcontent">
+    <image class="saveimg" src="{{widthdrawObject.image}}" mode='scaleToFill'></image>
+    <view class="savemodalbtn">
+      <button class="savemodalbtn_item" type="default" style="margin:0;background-color:#eee;"  bindtap='hideSaveModal'>取消</button>
+      <navigator class="savemodalbtn_item" >
+        <button style="border:none;" type='primary' bindtap="toSaveadv" >测一下</button>
+      </navigator>
+    </view>
+  </view>
+</view>

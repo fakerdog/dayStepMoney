@@ -1,0 +1,15 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/redBag/redBag",
+    "pages/withdetail/withdetail"
+    
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#f5d452",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh":false
+  }
+}

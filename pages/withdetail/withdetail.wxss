@@ -1,0 +1,361 @@
+
+page{
+  background-color: #e8e8e8;
+}
+
+.promotion-container {
+  background-color: #e8e8e8;
+}
+
+.withdetail-head {
+  height: 380rpx;
+  background-color: white;
+  text-align: center;
+  border-top: 0.5rpx solid #d3d3d3;
+}
+
+.withdetail-head-img {
+  margin: 0 auto;
+  width: 140rpx;
+  margin-top: 50rpx;
+}
+
+.withdetail-head-ideal {
+  color: #222;
+  font-size: 32rpx;
+  margin: 30rpx 0rpx 20rpx 0rpx;
+  font-weight: bold;
+}
+
+.withdetail-head-money {
+  color: red;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.draw-suij {
+  margin-left: 5rpx;
+  font-size: 28rpx;
+}
+
+.withdetail-head-ye {
+  color: #dcdcdc;
+  font-size: 36rpx;
+  margin: 20rpx auto;
+}
+
+.withdetail-desc {
+  font-size: 32rpx;
+  color: #333;
+  text-indent: 30rpx;
+  margin-top: 30rpx;
+  line-height: 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 10rpx;
+}
+
+.withdetail-green {
+  color: #3cb570;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.withdetail-con {
+  background-color: white;
+  height: 80rpx;
+  margin-top: 30rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  text-indent: 32rpx;
+  display: flex;
+  justify-content: left;
+}
+
+.withdetail-text {
+  height: inherit;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.inp {
+  height: inherit;
+  text-align: left;
+  display: inline-block;
+  line-height: 80rpx;
+  flex: 1;
+  margin-left: 10rpx;
+}
+
+.withdetail-bottom {
+  width: 100%;
+  text-align: center;
+  margin-top: 150rpx;
+}
+
+.withdetail-back {
+  font-size: 32rpx;
+  color: #3cb570;
+  position: absolute;
+  top: 280rpx;
+  right: 10rpx;
+}
+.withdetail-back-contact{
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 32rpx;
+  color: white;
+  position: absolute;
+  top: 210rpx;
+  right: 10rpx;
+}
+
+.withdetail-back::after {
+  background-color: none;
+}
+
+.withdetail-back-btn {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 0rpx;
+  border: none;
+}
+
+.withdetail-button {
+  width: 120rpx;
+  text-align: center;
+  background-color: #f71033;
+  border: none;
+  font-size: 32rpx;
+  padding-right: 22rpx;
+  margin-right: 10rpx;
+}
+
+.withdetail-button.disabled {
+  pointer-events: none;
+  background: #b07a7b;
+  color: #ccc;
+}
+
+.withdetail-button.disabled::after {
+  border-bottom-color: #b07a7b;
+}
+
+.flush {
+  width: 150rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  margin: 0rpx;
+  text-align: center;
+  background-color: #FFF;
+  color:#3cb570;
+  font-weight: bold;
+  text-decoration: underline;
+  border: none;
+}
+
+.withdrawWay{
+  width: 300rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  margin: 0rpx;
+  text-align: center;
+  background-color: #FFF;
+  color:#3cb570;
+  font-weight: bold;
+  text-decoration: underline;
+  border: none;
+}
+
+.backfriendstyle {
+  width: 100%;
+  max-height: 250rpx;
+  background-color: white;
+  margin-top: 30rpx;
+}
+
+button::after {
+  border: none;
+}
+
+.backotherstyle {
+  width: 100%;
+  height: auto;
+  background-color: white;
+  margin-top: 50rpx;
+}
+
+.backfriendstyle .redbag-log {
+  margin-left: 0rpx;
+}
+
+.redbag-log {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin: 10rpx auto 0 auto;
+}
+.redbag-log2 {
+  width: 654rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10rpx auto 0 auto;
+}
+.redbag-log .item {
+  width: 70rpx;
+  height: 70rpx;
+  margin-left: 22rpx;
+  margin-top: 20rpx;
+}
+.redbag-log2 .item2 {
+  width: 70rpx;
+  height: 70rpx;
+  margin-left: 10rpx;
+  margin-bottom: 5rpx;
+}
+
+.redbag-logimg {
+  width: 70rpx;
+  height: 70rpx;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  border: none;
+}
+.redbag-logimg2 {
+  width: 70rpx;
+  height: 70rpx;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  border: none;
+}
+
+.redbag-logimg image {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
+.redbag-logimg2 image {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
+
+.redbag-logimg .sharefriendbutton {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  border: none;
+}
+.redbag-receive2 {
+  color: #3cb570;
+  font-size: 26rpx;
+  text-align: center;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.redbag-receive {
+  color: #3cb570;
+  font-size: 26rpx;
+  text-align: center;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.assistinfo {
+  display: block;
+  color: #3cb570;
+  font-size: 26rpx;
+  margin-top: 24rpx;
+  margin-left: 28rpx;
+  margin-bottom: 10rpx;
+}
+
+.drawiconview{
+  width: 80rpx;
+  height: 90rpx;
+  position: fixed;
+  top: 60rpx;
+  left: 15rpx;
+}
+.drawicon{
+  width: 70rpx;
+  height: 80rpx;
+  border: none;
+}
+
+.specialway{
+  margin-top: 30rpx;
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+.specialway button{
+  background-color: #e8e8e8;
+}
+
+
+.mask {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100000;
+  overflow: hidden;
+  background: rgba(000, 000, 000, 0.8);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modalcontent{
+  border-radius: 25rpx;
+  font-size: 32rpx;
+  width: 580rpx;
+  height: 300rpx;
+  background: rgb(255, 255, 255); 
+}
+.modalbtn {
+  display: flex;
+  height: 80rpx;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.modalbtn_item {
+  font-size: 29rpx;
+  width: 260rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border: none;
+}
+.modalbtn_item button{
+  width: 100%;
+  height: 100%;
+  line-height: 70rpx;
+
+}
+.warntitle{
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border-bottom:#ccc solid 1px;
+  font-weight: bold;
+  margin: auto 0;
+}
+.warndesc{
+  height: 120rpx;
+  text-align: center;
+  
+}
+.warndesc text{
+margin: auto 0;
+}

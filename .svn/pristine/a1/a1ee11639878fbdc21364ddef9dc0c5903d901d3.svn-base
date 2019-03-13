@@ -1,0 +1,160 @@
+<!--pages/unlockedstep/unlockedstep.wxml-->
+
+<view class='withdetail-head'>
+  <view class='withdetail-head-img'>
+    <open-data style="border-radius:50%;overflow:hidden;display:block;height:100rpx;width:100rpx" type="userAvatarUrl"></open-data>
+  </view>
+  <view class='withdetail-head-ideal'>已有
+    <text style='color:red;font-weight:bold;'>{{shuijing}}</text>卡币，
+    <label class='withdetail-head-money'>
+      <text style='color:red;font-weight:bold;'>{{rmoney}}</text>
+      <text class="draw-suij">元</text>
+    </label>
+  </view>
+
+</view>
+
+<view class="head">
+  <view style='font-size:32rpx;'>您还有{{stepTot}}步</view>
+  <view style='margin-top:10rpx;font-size:32rpx;'>
+    预计可换
+    <text style='color:red;font-weight:bold;'>{{moneyTot}}</text>卡币， 约
+    <text style='color:red;font-weight:bold;'>{{money}}</text>元
+  </view>
+
+  <view class="share-img-block">
+    <button class='share-img-btn' open-type="getUserInfo" bindgetuserinfo='doshare'>
+      <image src='../../images/shareFriends.png'></image>
+      <text>本月步数分享图</text>
+    </button>
+
+    <button type='warn' open-type="getUserInfo" class='share-img-btn' bindgetuserinfo='todayStepShareImg'>
+      <image src='../../images/shareFriends.png'></image>
+      <text>今日步数分享图</text>
+    </button>
+  </view>
+</view>
+
+<scroll-view class="locklist">
+  <view class="lockitem" wx:for="{{steplist}}" wx:key="{{item}}">
+    <view class="lockdatadesc">{{item.datedesc}}</view>
+    <view class='item-steps'>{{item.steps}}步</view>
+    <view class="btnview">
+      <block wx:if="{{item.type == 3}}">
+        <button class="lockitembtn" style="background-color:#09b6fe;" type='warn' data-index="{{index}}" bindtap='numclick'>点开游戏{{keep_staytime}}秒领{{item.sjnum}}卡币</button>
+      </block>
+      <block wx:if="{{item.type == 2}}">
+        <button class="lockitembtn" type='default' data-index="{{index}}" bindtap='unlockshare'>解锁领取 {{item.sjnum}}卡币</button>
+      </block>
+      <block wx:if="{{item.type == 1}}">
+        <button class="lockitembtn" type='warn' open-type="share" data-sflag="2" data-index="{{index}}">分享领取 {{item.sjnum}}卡币</button>
+      </block>
+      <block wx:if="{{item.type == 0}}">
+        <button class="lockitembtn" data-index="{{index}}" bindtap='getShuiJing'>免费领取 {{item.sjnum}}卡币</button>
+      </block>
+
+    </view>
+  </view>
+  <view class='item-steps-desc'>步数来自微信运动，只保留近30天数据，请尽快兑换</view>
+  <view class="footerdraw" bindtap="todraw">获取更多卡币，点击进入</view>
+</scroll-view>
+
+<!--蒙层-->
+<view class='mask' wx:if='{{showShareModal}}'>
+  <view class="modalcontent" wx:if='{{showShareModal}}'>
+    <view class="modaltitle">步数兑换卡币</view>
+    <view class="modaltext">{{modaltext}}</view>
+    <view class="modaltextred" wx:if="{{diffgroup}}">请选择不同的群</view>
+    <view class="modalbtn">
+      <button class="cancelbtn" type='default' bindtap='hideShareModal'>取消</button>
+      <button open-type="share" type='warn' class="sharebtn">解锁领取</button>
+    </view>
+  </view>
+</view>
+
+
+<!-- 今日分享弹出层 -->
+<view class="drawer_screen" catchtouchmove="true" wx:if="{{showModalStatus}}">
+</view>
+<view class="drawer_box" catchtouchmove="true" wx:if="{{showModalStatus}}">
+  <view class="drawer_content_box">
+    <view class="drawer_content">
+      <image class="drawer_content_image" src='{{imagePath}}' mode='aspectFit'>
+      </image>
+    </view>
+
+    <view class="drawer_btn_block">
+      <button class="save-img" bindtap='saveImg'>保存分享图片</button>
+      <button bindtap='cancel' type='default'>取 消</button>
+    </view>
+
+  </view>
+</view>
+
+<block wx:if="{{iphone}}">
+  <canvas class="drawer_content_canvas {{hiddenCanvas?'hidden-view':''}}" canvas-id="shareCanvas" mode='aspectFit'>
+  </canvas>
+</block>
+<block wx:else>
+  <canvas class="drawer_content_canvas_abs" canvas-id="shareCanvas">
+  </canvas>
+</block>
+
+<!-- 月分享弹出层 -->
+<view class="drawer_screen" catchtouchmove="true" wx:if="{{showModalMonthStatus}}">
+</view>
+<view class="drawer_box" catchtouchmove="true" wx:if="{{showModalMonthStatus}}">
+  <view class="drawer_content_box">
+    <view class="drawer_content">
+      <image class="drawer_content_image2" src='{{imageMonthPath}}' mode='aspectFit'>
+      </image>
+    </view>
+
+    <view class="drawer_btn_block">
+      <button class="save-img" bindtap='saveMonthImg'>保存分享图片</button>
+      <button bindtap='monthcancel' type='default'>取 消</button>
+    </view>
+
+  </view>
+</view>
+
+<block wx:if="{{iphone}}">
+  <canvas class="drawer_monthcontent_canvas {{hiddenMonthCanvas?'hidden-view':''}}" canvas-id="shareMonthCanvas" mode='aspectFit'>
+  </canvas>
+</block>
+<block wx:else>
+  <canvas class="drawer_monthcontent_canvas_abs" canvas-id="shareMonthCanvas">
+  </canvas>
+</block>
+
+
+
+
+<!--蒙层-->
+<view class='redPackagemask' wx:if='{{redPackageModal}}'>
+  <view class="modalDlg">
+    <image class="backimg" src="../../images/redenvelope.png"></image>
+    <block>
+      <view class='miniicon'>
+        <view class='miniiconitem'>
+          <image style="width: 100%;height: 100%;" src="../../images/myicon.png"></image>
+        </view>
+        <text>x</text>
+        <view class='miniiconitem'>
+          <image style="width: 100%;height: 100%;" src="{{modalObj.image}}"></image>
+        </view>
+      </view>
+      <view class='regbagtext'>
+        <view class="descp1">给你发了一个红包</view>
+        <view class="descp">恭喜发财，大吉大利</view>
+      </view>
+      <view class='btnimg'>
+        <image bindtap="toRedBag" style="width: 100%;height: 100%;" src="../../images/open.png"></image>
+      </view>
+      <view class='popuptext'>
+        <view wx:if="{{modalObj.limit!=-1}}">{{modalfootersecond}}s后自动关闭</view>
+        <view class="closetext" bindtap="toclose">关闭</view>
+      </view>
+    </block>
+  </view>
+</view>

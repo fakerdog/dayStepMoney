@@ -1,0 +1,77 @@
+<view class='promotion-container'>
+  
+  <view class='withdetail-head'>
+    <view class='withdetail-head-img'>
+      <open-data style="border-radius:50%;overflow:hidden;display:block;height:140rpx;width:140rpx" type="userAvatarUrl"></open-data>
+    </view>
+    <view class='withdetail-head-ideal'>{{shuijing}}卡币</view>
+    <view class='withdetail-head-money'>{{money}}
+      <label class="draw-suij">元</label>
+    </view>
+  </view>
+
+  <view class='withdetail-con'>
+    <text class='withdetail-text'>提现￥</text>
+    <input type="digit" placeholder='输入金额，提现到微信零钱' value='{{allmoney}}' class="inp" bindinput='moneyInput'></input>
+    <button class='withdetail-button {{btnDisabled}}' bindtap='towithdetail'>提现</button>
+  </view>
+  <view class="backfriendstyle" wx:if='{{assistflag}}'>
+    <view class='withdetail-desc'>
+        <text>助力提现已发起</text>
+        <button class="flush" bindtap="flushassistinfo" style='font-weight:normal'>刷新</button>
+        <button class="withdrawWay" open-type="contact" style='font-weight:normal'>{{special_withdraw_money}}元提现通道</button>
+        
+    </view>
+    <view class='redbag-log' wx:if='{{assistflag}}'>
+      <view wx:for='{{assistlist}}' wx:index="index" wx:key="key" class="item">
+        <view class="redbag-logimg">
+          <button open-type='share' class="sharefriendbutton" style="background:url({{item.avatarUrl}}) no-repeat; background-size:100% 100%;"></button>
+        </view>
+      </view>
+    </view>
+    <view wx:if='{{assistflag}}' class="assistinfo"> 已有{{assistcount}}人助力，{{assistcount==assist_totalcount?"助力完成":"还差"+(assist_totalcount-assistcount)+"人"}}（当日有效）</view>
+    <view style="height:4rpx;"></view>
+  </view>
+  <view class="specialway" wx:if="{{!assistflag}}"><button class="withdrawWay" open-type="contact" style='font-weight:normal'>{{special_withdraw_money}}元提现通道</button></view>
+  <view class="backotherstyle">
+    <view style="height:4rpx;"></view>
+    <view class='redbag-receive2'>100000+人已提现</view>
+    <view class='redbag-log2'>
+      <view wx:for='{{drawhead}}' wx:index="index" wx:key="key" class="item2">
+        <view class="redbag-logimg2">
+          <image src='{{item.imgUrl}}'></image>
+        </view>
+      </view>
+    </view>
+    <view style="height:40rpx;"></view>
+  </view>
+  
+  <view class="bg_red">
+    <button open-type='share' type='warn' style='border:none;width:50%;margin-top:30rpx;'>分享群好友</button>
+  </view>
+  <view style="height:40rpx;"></view>
+  
+
+  <view class='withdetail-bottom'>
+    <navigator class='withdetail-back' url="/pages/index/index" hover-class="none" open-type='redirect'>
+      <button class="withdetail-back-btn">继续赚钱</button>
+    </navigator>
+  </view>
+
+  <view class="drawiconview">
+    <button bindtap='toAdvise' class="drawicon" style="background:url('{{kefuicon}}') no-repeat; background-size:100% 100%;"></button>
+  </view>
+
+</view>
+
+<!--保存蒙层-->
+<view class='mask' wx:if='{{showModal}}'>
+  <view class="modalcontent">
+    <view class="warntitle">{{warnObject.warntitle}}</view>
+    <view class="warndesc"><text>{{warnObject.warndesc}}</text></view>
+    <view class="modalbtn">
+      <button class="modalbtn_item" style="margin:0;background-color:#ccc;"  bindtap='hideModal'>取消</button>
+      <button class="modalbtn_item" style="margin:0;" open-type="contact" type='primary' >{{special_withdraw_money}}元提现通道</button>
+    </view>
+  </view>
+</view>

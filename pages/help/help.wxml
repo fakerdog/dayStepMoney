@@ -1,0 +1,24 @@
+<!--pages/help/help.wxml-->
+<view class="helpview">
+  <view class="textview" style='text-align:center;font-weight:bold;font-size:36rpx;'>步数换钱说明</view>
+  <view class="textview">您每天都有很多步数，这其实是一笔财富！</view>
+  <view class="textview">本系统会从微信运动获取您近30天的步数，这些步数可以兑换零钱、提现！</view>
+  <view class="textview"></view>
+  <view class="textview" style='font-weight:bold;'>兑换规则：</view>
+  <view class="textview">依照平台规则，步数须先兑换为卡币（卡路里币），而{{exchangenumber}}个卡币就可兑换1元；</view>
+  <view class="textview">卡币也可以参与抽奖，可以抽到红包、礼品等；</view>
+
+  <view class="textview">
+    <navigator hover-class='none' url='/pages/unlockedstep/unlockedstep'>
+      <button type='primary' class='mystep-btn'>我的步数可以换多少钱？</button>
+    </navigator>
+
+    <button type='warn' open-type='share' class='mystep-btn'>分享好友一起赚钱</button>
+  </view>
+
+  <view class="textview-desc" style='margin-top:80rpx;'>每天的步数浪费掉，还不如换点零花钱</view>
+  <view class="textview-desc">—— 天天步数有赏</view>
+  <view class="textview-desc" style='font-size:24rpx;'>步数直接换钱的小程序</view>
+</view>
+
+

@@ -1,0 +1,86 @@
+/* pages/redBag/redBag.wxss */
+page{
+    background-color: #f5d452;
+}
+.promotion-container{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: #f5d452;
+  z-index: -10;
+  bottom: 0;
+}
+
+.redbag-conbanner{
+  background-color: white;
+  height: 375rpx;
+  width: 600rpx;
+  margin: 0  auto;
+  padding-top: 35rpx;
+}
+.redbag-banner{
+  text-align:center;
+  height: 300rpx;
+  width: 540rpx;
+  margin: 0 auto;
+}
+.redbag-banner image{
+  margin: 0 auto;
+  height: 300rpx;
+  width: 540rpx;
+}
+
+.redbag-bantext{
+  font-size: 25rpx;
+  text-indent: 30rpx;
+  margin-top: 20rpx;
+}
+.redbag-money{
+  color: white;
+  font-size: 25rpx;
+  text-align: center;
+  margin-top: 50rpx;
+}
+.header-right{
+  font-size: 70rpx;
+  font-weight: 700;
+  margin-bottom: 15rpx;
+}
+.draw-suij{
+  margin-left: 5rpx;
+  font-size: 25rpx;
+}
+.redbag-log{
+  width: 420rpx;
+  display: flex;
+  flex-direction: row;
+	flex-wrap:wrap;
+  margin: 60rpx auto 0 auto;
+}
+.redbag-logimg{
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+}
+.redbag-logimg image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  border: 2rpx solid rgb(231, 231, 231);
+}
+.redbag-me {
+ width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  border: 2rpx solid rgb(231, 231, 231);
+}
+.redbag-receive{
+  color: white;
+  font-size: 25rpx;
+  text-align: center;
+  margin-top: 40rpx;
+}
+.redbag-save{
+  font-size: 25rpx;
+}
+

@@ -1,0 +1,31 @@
+<!--pages/giveaway/giveaway.wxml-->
+<view class='promotion-container'>
+
+  <view class='withdetail-head'>
+    <view class='withdetail-head-img'>
+      <open-data style="border-radius:50%;overflow:hidden;display:block;height:140rpx;width:140rpx" type="userAvatarUrl"></open-data>
+    </view>
+    <view class='withdetail-head-ideal'><view class="title">{{friendnickname}}请求你赞助步数</view></view>
+  </view>
+
+  <view class='withdetail-con'>
+    <text class='withdetail-text'>步数：</text>
+    <input type="number" class="inp" placeholder='请输入步数' value='{{inputvalue}}' class="inp" bindinput='idealmoneyInput'></input>
+    <button class='withdetail-button ' disabled='{{btnDisabled}}' bindtap='togiveaway'>赞助</button>
+  </view>
+  <view class="exchangedesc">今日可捐赠{{mystep}}步</view>
+
+  <view class='withdetail-head-step'>
+    <view>您有
+      <text>{{ideamoneyTot}}卡币（约{{money}}元）</text>待领取</view>
+    <button class="draw-suij" bindtap="toindex">立即领取</button>
+  </view>
+</view>
+
+<!--微信授权-->
+<view class='mask' wx:if="{{showScopeModule}}">
+  <view wx:if="{{showScopeModule}}" class='scopeModule'>
+    <view class="scopeTitle">打开微信运动授权，开始获取步数</view>
+    <view class="scope-confirm" bindtap='myopenSetting'>确定</view>
+  </view>
+</view>

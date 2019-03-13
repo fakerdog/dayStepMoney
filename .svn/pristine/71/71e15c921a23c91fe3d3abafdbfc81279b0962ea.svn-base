@@ -1,0 +1,239 @@
+/* pages/exchangemoney/exchangemoney.wxss */
+page{
+  background-color: #e8e8e8;
+}
+
+.promotion-container {
+  background-color: #e8e8e8;
+}
+
+button::after {
+  content: "";
+  border: none;
+}
+
+.withdetail-head {
+  height: 380rpx;
+  background-color: white;
+  text-align: center;
+  border-top: 0.5rpx solid #d3d3d3;
+}
+
+.withdetail-head-img {
+  margin: 0 auto;
+  width: 140rpx;
+  margin-top: 50rpx;
+}
+
+.withdetail-head-ideal {
+  color: #222;
+  font-size: 32rpx;
+  margin: 30rpx 0rpx 20rpx 0rpx;
+  font-weight: bold;
+}
+
+.draw-suij {
+  font-size: 36rpx;
+  padding: 0rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 300rpx;
+  margin: 30rpx 0rpx;
+}
+.draw-suij::after{
+  border:none;
+}
+
+.withdetail-head-money {
+  color: red;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.withdetail-head-step {
+  width: 100%;
+  margin-top: 80rpx;
+  font-size: 36rpx;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.withdetail-head-step text{
+  color: red;
+}
+
+.withdetail-con {
+  background-color: white;
+  height:  80rpx;
+  margin-top: 30rpx;
+  line-height:  80rpx;
+  font-size: 32rpx;
+  text-indent: 32rpx;
+  display: flex;
+  justify-content: left;
+  text-align: center;
+  border-top: 0.5rpx solid #d3d3d3;
+}
+.withdetail-button {
+  line-height:  80rpx;
+  text-align: center;
+  background-color: #f71033;
+  border: none;
+  font-size: 32rpx;
+  padding-right: 22rpx;
+  margin-right: 10rpx;
+}
+
+.withdetail-button.disabled {
+  pointer-events: none;
+  background: #b07a7b;
+  color: #ccc;
+}
+
+.withdetail-button.disabled::after {
+  border-bottom-color: #b07a7b;
+}
+.withdetail-text {
+  height: inherit;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.inp {
+  height: inherit;
+  text-align: left;
+  display: inline-block;
+  line-height: 80rpx;
+  flex: 1;
+  margin-left: 10rpx;
+}
+
+.exchangedesc {
+  margin-top: 20rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #3cb570;
+}
+
+.btnclass {
+  margin-top: 80rpx;
+}
+
+.btnclass  button {
+  width: 400rpx;
+  line-height: 80rpx;
+  border-radius: 80rpx;
+  font-size: 36rpx;
+  height: 80rpx;
+  background-color: #f71033;
+  border: 1px solid #f71033;
+}
+
+.btnclass  button::after {
+  border: none;
+}
+
+/** 赠送人列表-start**/
+.giveawayfriends-block{
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+.giveawayfriendstyle{
+  margin: 0 auto;
+  background-color: #fff;
+  width: 650rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 15rpx;
+  /* padding: 10rpx 10rpx 15rpx 10rpx; */
+  margin-top:68rpx;
+  height:280rpx;
+}
+
+.giveaway-desc {
+  font-size:30rpx;
+  width: 100%;
+  color: red;
+  text-align: center;
+  margin-top: 20rpx;
+}
+
+.giveaway-log {
+  width: 500rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin: 10rpx auto 0 auto;
+}
+
+.giveaway-log .item {
+  width: 70rpx;
+  /* height: 140rpx; */
+  margin-left: 30rpx;
+}
+
+.giveaway-logimg {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  border: none;
+}
+
+.giveaway-logimg .giveawayfriendbutton {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  border: none;
+}
+.giveawaysetps{
+  width: 80rpx;
+  font-size: 20rpx;
+  text-align: center;
+  color: #666;
+}
+.giveawaybtn{
+  width: 400rpx;
+  line-height: 60rpx;
+  height: 65rpx;
+  z-index:100;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+/** 赠送人列表-end**/
+
+.flush {
+  background-color: #fff;
+  width: 70rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  margin: 0rpx;
+  text-align: center;
+  color:#3cb570;
+  text-decoration: underline;
+  border: none;
+  text-indent: 0;
+  margin-left: 20rpx;
+}
+
+.giveaway-view-btn {
+  font-size: 32rpx;
+  color: #333;
+  text-indent: 30rpx;
+  line-height: 40rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10rpx;
+  margin-bottom: 20rpx;
+}

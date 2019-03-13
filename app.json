@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/redBag/redBag",
+    "pages/withdetail/withdetail",
+    "pages/unlockedstep/unlockedstep",
+    "pages/help/help",
+    "pages/friendhelp/friendhelp",
+    "pages/record/record",
+    "pages/assist/assist",
+    "pages/exchangemoney/exchangemoney",
+    "pages/giveaway/giveaway",
+    "pages/draw/draw",
+    "pages/advise/advise",
+     "pages/pubwithdetail/pubwithdetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fc5050",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": false
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx88bbae21474301ed",
+    "wxc75cac912af33647",
+    "wx78caa30cd32c16b9",
+    "wxb52b11c4dd14b6fc",
+    "wxf9a87f517db88e2a",
+    "wx55f339fca52f0483",
+    "wx0195d557fcc31bef",
+    "wxb59122e4e78319bc",
+    "wxa344448166586158"
+  ]
+}

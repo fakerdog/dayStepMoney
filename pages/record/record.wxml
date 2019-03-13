@@ -1,0 +1,14 @@
+<!--pages/record/record.wxml-->
+<view class="head">
+  {{nickname}}，{{shuijing}}卡币
+  <button class="moreshuijing" bindtap="toindex">获取更多卡币</button>
+</view>
+
+<scroll-view class="locklist">
+  <view class="lockitem" wx:for="{{recordlist}}">
+    <view>获得{{item.idealMoney}}卡币</view>
+    <view>{{item.source}}</view>
+    <view class="btnview">
+    </view>
+  </view>
+</scroll-view>

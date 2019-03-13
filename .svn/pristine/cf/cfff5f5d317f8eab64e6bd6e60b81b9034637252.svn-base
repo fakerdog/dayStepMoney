@@ -1,0 +1,53 @@
+/* pages/advise/advise.wxss */
+page {
+  width: 100%;
+  background-color: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.advisecontainer-form{
+  width: 800rpx;
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0rpx;
+}
+.advisecontainer-form text{
+  color: #666;
+  margin-bottom: 10rpx;
+  font-size: 32rpx;
+  margin-left: 6rpx;
+}
+.adviseview{
+  background-color: #FFF;
+  width: 100%;
+  height: 400rpx;
+  margin-bottom: 30rpx;
+  border-radius: 8rpx;
+}
+.advisecontent{
+  border:none;
+  height: 100%;
+  width: 100%;
+  padding: 6rpx;
+  margin-top: 6rpx;
+}
+.form-item-input{
+  background-color: #FFF;
+  border: none;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 8rpx;
+  padding: 6rpx;
+  margin-top: 6rpx;
+}
+.submit-save-btn{
+  margin-top: 60rpx;
+  width: 700rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  border: none;
+}

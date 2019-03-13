@@ -1,0 +1,346 @@
+page {
+  background: #fff;
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.header-left {
+  margin-left: 40rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.header-right {
+  margin-right: 40rpx;
+  color: white;
+  font-size: 70rpx;
+}
+
+.draw-suij {
+  margin-left: 5rpx;
+  font-size: 25rpx;
+}
+
+.draw-wxname {
+  margin-bottom: 10rpx;
+  text-align: left;
+  font-size: 25rpx;
+  color: white;
+}
+
+button::after {
+  content: "";
+  border: none;
+}
+
+.moneybtn {
+  background: none;
+  border: none;
+  height: 50rpx;
+  background-size: 100% 100%;
+  line-height: 50rpx;
+  color: white;
+  font-size: 25rpx;
+}
+
+.indexbg {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #fefefe;
+}
+
+.footer {
+  position: relative;
+  width: 400rpx;
+  height: 150rpx;
+}
+
+.draw-with {
+  position: absolute;
+  width: 400rpx;
+  height: 60rpx;
+  border-radius: 50rpx;
+  background: #000;
+  opacity: 0.5;
+}
+
+.draw-withm {
+  color: #fff;
+  position: absolute;
+  z-index: 2;
+  font-size: 25rpx;
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  line-height: 60rpx;
+}
+
+.draw-fivesj {
+  z-index: 2;
+  color: white;
+  font-size: 25rpx;
+  margin: 30rpx auto 0 auto;
+  text-align: center;
+}
+
+/* 转盘 */
+
+.canvas-container {
+  margin: 0 auto;
+  position: relative;
+  width: 600rpx;
+  height: 600rpx;
+  border-radius: 50%;
+  box-shadow: 2px 2rpx 25rpx red, 0 -2rpx 25rpx red, -2px 2rpx 25rpx red, 0 2rpx 25rpx red;
+}
+
+.canvas-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  display: block;
+  width: 600rpx;
+  height: 600rpx;
+  border-radius: inherit;
+  background-clip: padding-box;
+  background-color: white;
+}
+
+.canvas-element {
+  position: relative;
+  z-index: 1;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+}
+
+.canvas-list {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: inherit;
+  height: inherit;
+  z-index: 9999;
+}
+
+.canvas-item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: #e4370e;
+  font-size: 32rpx;
+  font-weight: bold;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.canvas-item-text {
+  position: relative;
+  display: block;
+  padding-top: 40rpx;
+  margin: 0 auto;
+  text-align: center;
+  -webkit-transform-origin: 50% 300rpx;
+  transform-origin: 50% 300rpx;
+}
+
+/* 分隔线 */
+
+.canvas-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: inherit;
+  height: inherit;
+  z-index: 99;
+}
+
+.canvas-litem {
+  position: absolute;
+  left: 300rpx;
+  top: 0;
+  width: 1px;
+  height: 300rpx;
+  background-color: rgba(228, 55, 14, 0.4);
+  overflow: hidden;
+  -webkit-transform-origin: 50% 300rpx;
+  transform-origin: 50% 300rpx;
+}
+
+/**
+* 抽奖按钮
+*/
+
+.canvas-btn {
+  position: absolute;
+  left: 220rpx;
+  top: 220rpx;
+  z-index: 400;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  color: #f4e9cc;
+  background-color: #e44025;
+  line-height: 160rpx;
+  text-align: center;
+  font-size: 40rpx;
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
+  text-decoration: none;
+}
+
+.canvas-btn::after {
+  position: absolute;
+  display: block;
+  content: ' ';
+  left: 21rpx;
+  top: -91rpx;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  border-width: 60rpx;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-color: #e44025;
+}
+
+.canvas-btn.disabled {
+  pointer-events: none;
+  background: #b07a7b;
+  color: #ccc;
+}
+
+.canvas-btn.disabled::after {
+  border-bottom-color: #b07a7b;
+}
+
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  z-index: 9000;
+  opacity: 0.7;
+}
+
+.modalDlg {
+  width: 500rpx;
+  height: 653rpx;
+  position: absolute;
+  top: 600rpx;
+  left: 50rpx;
+  z-index: 9999;
+  margin: -370rpx 85rpx;
+  background-color: #fff;
+  border-radius: 36rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button::after {
+  content: "";
+  border: none;
+}
+
+.btnimg {
+  width: 160rpx;
+  height: 160rpx;
+  position: absolute;
+  top: 966rpx;
+  left: 29%;
+  z-index: 10000;
+  margin: -370rpx 85rpx;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button::after {
+  content: "";
+  border: none;
+}
+
+.btnimg button {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-size: 160rpx 160rpx;
+  background-repeat: no-repeat;
+  border: none;
+  background-image: url('https://zuji.weixinpy.com/luckyDraw/share.png');
+}
+
+.popuptext {
+  width: 450rpx;
+  position: absolute;
+  top: 1150rpx;
+  left: 11%;
+  z-index: 10000;
+  margin: -370rpx 85rpx;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.regbagtext {
+  width: 450rpx;
+  position: absolute;
+  top: 770rpx;
+  left: 11%;
+  z-index: 10000;
+  margin: -370rpx 85rpx;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30rpx;
+  color: yellow;
+}
+
+.popuptext text {
+  font-size: 24rpx;
+  color: yellow;
+}
+
+.popupbanner {
+  width: 500rpx;
+  height: 280rpx;
+  position: absolute;
+  top: 600rpx;
+  left: 50rpx;
+  z-index: 9999;
+  margin: -370rpx 85rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popupbanner image {
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+}

@@ -1,0 +1,42 @@
+<!--pages/exchangemoney/exchangemoney.wxml-->
+<view  class='promotion-container'>
+  <view class='withdetail-head'>
+    <view class='withdetail-head-img'>
+      <open-data style="border-radius:50%;overflow:hidden;display:block;height:140rpx;width:140rpx" type="userAvatarUrl"></open-data>
+    </view>
+    <view class='withdetail-head-ideal'>共{{idealmoney}}卡币</view>
+    <view class='withdetail-head-money'>预计可以兑换{{exchangemoney}}元</view>
+  </view>
+
+  <view class='withdetail-con'>
+    <text class='withdetail-text'>卡币换钱：</text>
+    <input type="number" placeholder='请输入卡币数量' value='{{inputvalue}}' class="inp" bindinput='idealmoneyInput'></input>
+    <button class='withdetail-button {{btnDisabled}}' bindtap='exchangemoney'>兑换</button>
+  </view>
+  <view class="exchangedesc">{{exchangnumber}}卡币可换1元</view>
+ 
+  <view class='withdetail-head-step'>
+    <view>您还有<text>{{stepsidealmoney}}卡币（约{{stepmoney}}元）</text>待领取</view>
+    <button class="draw-suij" bindtap="unlockAll">立即领取</button>
+  </view>
+
+  <view class="giveawayfriendstyle">
+    <view class='giveaway-desc'>
+        <text>卡币还是不够？点击"+"请求好友赠送步数给我</text>
+    </view>
+    <view class='giveaway-log' style='margin-top:20rpx;'>
+      <view wx:for='{{giveawaylist}}' wx:index="index" wx:key="key" class="item">
+        <view class="giveaway-logimg">
+          <button open-type='share' data-flagdesc='giveaway' class="giveawayfriendbutton" style="background:url({{item.avatarUrl}}) no-repeat; background-size:100% 100%;"></button>
+        </view>
+        <view wx:if="{{item.giveawaysteps !=''}}" class="giveawaysetps">{{item.giveawaysteps}}</view>
+      </view>
+    </view>
+     <view class='giveaway-view-btn'>
+        <view style='color:#fff;'>xx</view>
+        <button class="giveawaybtn"hover-class='button-hover' bindtap='exchangeGiveAway'>共{{totawaystep}}步 兑换{{totawayidealmoney}}卡币</button>
+        <button class="flush" hover-class='button-hover' bindtap="toflush">刷新</button>
+    </view>
+  </view>
+
+</view>

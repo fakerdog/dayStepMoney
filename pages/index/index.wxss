@@ -1,0 +1,923 @@
+page {
+  background: #fff;
+  width: 100%;
+  height: 100%;
+}
+
+/**用户信息-start**/
+
+.personalInformation {
+  width: 100%;
+  height: 270rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(#fc5050, #f71033); 
+}
+
+.helpicon {
+  position: absolute;
+  width: 55rpx;
+  height: 55rpx;
+  top: 40rpx;
+  right: 15rpx;
+}
+
+.avatarsBox {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.opendata {
+  width: 100rpx;
+  height: 100rpx;
+  display: block;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.message {
+  margin-top: 50rpx;
+}
+
+.prices {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: #fff;
+  font-size: 36rpx;
+}
+
+.lmCoin {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: space-between;
+}
+
+.lmCointext {
+  font-size: 36rpx;
+  display: inline-block;
+  margin-left: 20rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.moneybtn {
+  width: 130rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin: 0rpx 10rpx;
+  font-size: 36rpx;
+}
+
+/**用户信息-end**/
+
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.header-left {
+  margin-left: 40rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.header-right {
+  margin-right: 40rpx;
+  color: white;
+  font-size: 70rpx;
+}
+
+.draw-suij {
+  margin-left: 5rpx;
+  font-size: 25rpx;
+}
+
+.draw-wxname {
+  margin-bottom: 10rpx;
+  text-align: left;
+  font-size: 25rpx;
+  color: white;
+}
+
+.indexbg {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #fefefe;
+}
+
+.footer {
+  margin-top: 32rpx;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-desc {
+  font-size: 28rpx;
+  text-align: center;
+  margin-top: 25rpx;
+}
+.minapp-sologn{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.sologn-sharebtn{
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  background-color: #FFF;
+  border: none;
+  color: green;
+  text-decoration: underline;
+  margin: 0rpx;
+  padding: 0rpx;
+  margin-left: 10rpx;
+  margin-top: 26rpx;
+}
+
+.draw-with-block {
+  position: fixed;
+  left: 0rpx;
+  top: 50rpx;
+  width: 210rpx;
+  height: 60rpx;
+}
+
+.draw-with-block swiper {
+  height: 60rpx;
+  padding-left: 5rpx;
+}
+
+.draw-with {
+  position: absolute;
+  width: 210rpx;
+  height: 60rpx;
+  border-top-right-radius: 50rpx;
+  border-bottom-right-radius: 50rpx;
+  background: #000;
+  opacity: 0.5;
+  text-align: left;
+}
+
+.draw-withm {
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #fff;
+  position: absolute;
+  z-index: 2;
+  font-size: 25rpx;
+  text-align: left;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+}
+
+/* 转盘 */
+
+.canvas-container {
+  margin: 0 auto;
+  position: relative;
+  width: 340rpx;
+  height: 340rpx;
+  border-radius: 50%;
+  box-shadow: 2px 2rpx 10rpx red, 0 -2rpx 10rpx red, -2px 2rpx 10rpx red, 0 2rpx 10rpx red;
+}
+
+.canvas-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  display: block;
+  width: 340rpx;
+  height: 340rpx;
+  border-radius: inherit;
+  background-clip: padding-box;
+  background-color: white;
+}
+
+.canvas-element {
+  position: relative;
+  z-index: 1;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+}
+
+.canvas-list {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: inherit;
+  height: inherit;
+  z-index: 9999;
+}
+
+.canvas-item {
+  position: absolute;
+  left: 0;
+  top: -90rpx;
+  width: 100%;
+  height: 100%;
+  color: #e4370e;
+  font-size: 26rpx;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.canvas-item-text {
+  position: relative;
+  display: block;
+  padding-top: 100rpx;
+  margin: 0 auto;
+  text-align: center;
+  -webkit-transform-origin: 50% 26rpx;
+  transform-origin: 50% 260rpx;
+}
+
+/* 分隔线 */
+
+.canvas-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: inherit;
+  height: inherit;
+  z-index: 99;
+}
+
+.canvas-litem {
+  position: absolute;
+  left: 170rpx;
+  top: 0rpx;
+  width: 1px;
+  height: 150rpx;
+  background-color: #e44025;
+  overflow: hidden;
+  -webkit-transform-origin: 50% 300rpx;
+  transform-origin: 50% 170rpx;
+}
+
+/**
+* 抽奖按钮
+*/
+
+.canvas-btn {
+  position: absolute;
+  left: 112rpx;
+  top: 120rpx;
+  z-index: 400;
+  width: 116rpx;
+  height: 116rpx;
+  border-radius: 50%;
+  color: #f4e9cc;
+  background-color: #e44025;
+  line-height: 116rpx;
+  text-align: center;
+  font-size: 36rpx;
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
+  text-decoration: none;
+}
+
+.canvas-btn::after {
+  position: absolute;
+  display: block;
+  content: ' ';
+  left: 9.3rpx;
+  top: -69rpx;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  border-width: 50rpx;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-color: #e44025;
+}
+
+.canvas-btn.disabled {
+  pointer-events: none;
+  background: #b07a7b;
+  color: #ccc;
+}
+
+.canvas-btn.disabled::after {
+  border-bottom-color: #b07a7b;
+}
+
+.mask {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: hidden;
+  background: rgba(000, 000, 000, 0.3);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalDlg {
+  width: 500rpx;
+  height: 653rpx;
+  z-index: 9999;
+  background-color: #fff;
+  border-radius: 36rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button::after {
+  content: "";
+  border: none;
+}
+
+.btnimg {
+  width: 160rpx;
+  height: 160rpx;
+  z-index: 10000;
+  border-radius: 50%;
+  margin-top: 102rpx;
+}
+
+.btnimg2 {
+  width: 160rpx;
+  height: 160rpx;
+  z-index: 10000;
+  border-radius: 50%;
+  margin-top: 88rpx;
+}
+
+.btnimg3 {
+  width: 160rpx;
+  height: 160rpx;
+  z-index: 10000;
+  border-radius: 50%;
+  margin-top: 214rpx;
+}
+
+.btn3 {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  border: none;
+}
+
+.popuptext view {
+  font-size: 24rpx;
+  color: yellow;
+  text-align: center;
+  height: 30rpx;
+}
+
+button::after {
+  content: "";
+  border: none;
+}
+
+.btnimg2 .coverimage {
+  width: 160rpx;
+  height: 160rpx;
+  position: absolute;
+  z-index: 10000;
+}
+
+.btnimg button {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-size: 160rpx 160rpx;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+.backimg {
+  width: 500rpx;
+  height: 653rpx;
+  position: absolute;
+}
+
+.popuptext {
+  width: 450rpx;
+  z-index: 10000;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 56rpx;
+  height: 60rpx;
+}
+
+.regbagtext {
+  width: 100%;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 36rpx;
+  color: yellow;
+  margin-top: 116rpx;
+}
+.regbagtext .descp{
+  text-align: center;
+  width: 100%;
+}
+
+.popuptext .covertext {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: yellow;
+  text-align: center;
+  height: 40rpx;
+}
+
+.popupbanner {
+  width: 500rpx;
+  height: 280rpx;
+  z-index: 9999;
+  display: flex;
+}
+
+.popupbanner .coverimage {
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+}
+
+.main {
+  padding: 0px;
+}
+
+.main .choujiang-title {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20rpx;
+  font-weight: bold;
+  font-size: 36rpx;
+}
+
+/**运动版本-start**/
+
+/**步数模块-start**/
+
+.stepmodule {
+  width: 100%;
+  /* height: 236rpx; */
+}
+
+.steptitle {
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  padding-bottom: 5rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.title {
+  font-size: 36rpx;
+  margin-left: 30rpx;
+}
+
+.steptitle button {
+  margin-left: 30rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin-right: 15rpx;
+  padding: 0px 10rpx;
+  background-color: #fff;
+  border: none;
+  color: #000;
+  text-decoration: underline;
+}
+
+.modulecontent {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.textbutton {
+  display: flex;
+  width: 280rpx;
+  font-size: 30rpx;
+  align-items: center;
+  margin-top: 20rpx;
+  flex-direction: column;
+  background-color: #eee;
+  padding: 10rpx 0rpx 10rpx 0rpx;
+  border-radius: 15rpx;
+  height: 180rpx;
+}
+
+.textbutton title {
+  font-size: 30rpx;
+}
+.textbutton view{
+  margin: 5rpx 0rpx;
+}
+.kabi-img{
+  margin-top: 10rpx;
+  width: 90rpx;
+  height: 90rpx;
+}
+
+.textbutton button {
+  width: 180rpx;
+  line-height: 50rpx;
+  height: 50rpx;
+  padding: 0rpx 10rpx;
+}
+
+.stepcanvase {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+
+.mystep-canvas {
+  width: 100px;
+  height: 100px;
+}
+
+.cycleview {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  margin-left: 8px;
+  margin-top: 10px;
+}
+
+.mystep-block {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  background-color: #ff4040;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.today-step-title {
+  font-size: 12px;
+}
+
+.today-step-num {
+  margin-top: -10rpx;
+  font-size: 46rpx;
+}
+
+.scale-cls {
+  transition: transform 0.5s;
+  transform: scale(1.5, 1.5);
+}
+
+.scale-title-cls {
+  transition: transform 0.5s;
+  transform: scale(1.2, 1.2);
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  height: 100px;
+  font-size: 32rpx;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+/**步数模块-end**/
+
+.draw-desc {
+  z-index: 2;
+  font-size: 32rpx;
+  margin: 10rpx auto 0 auto;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.drawMoney-color {
+  margin-top: 30rpx;
+  font-size: 70rpx;
+  color: yellow;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+}
+
+/**运动版本-end**/
+
+/* pages/werun/werun.wxss */
+
+.scopeModule {
+  width: 580rpx;
+  height: 240rpx;
+  /* border: 1px solid #ddd; */
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 10rpx;
+  background-color: #fff;
+}
+
+.scopeTitle {
+  text-align: center;
+  font-size: 32rpx;
+  height: 140rpx;
+  line-height: 140rpx;
+  border-bottom: 1rpx solid #ccc;
+  color: #999;
+}
+
+.mask {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.scope-confirm {
+  font-size: 36rpx;
+  color: #4dca32;
+  text-align: center;
+  height: 104rpx;
+  line-height: 104rpx;
+}
+
+.newuserfontstyle {
+  text-align: center;
+  width: 100%;
+  font-size: 44rpx;
+  font-weight: bold;
+}
+
+.guide-all {
+  width: 600rpx;
+  height: 520rpx;
+  border-radius: 30rpx;
+  background-color: #fff;
+}
+
+.guide-all .guide-step {
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.guide-all .guide-run {
+  width: 100%;
+  height: 150rpx;
+  margin: 0 auto;
+  line-height: 50rpx;
+  white-space: normal;
+  text-align: center;
+}
+
+.guide-all .guide-run view{
+  margin-top: 15rpx;
+}
+
+.guide-but{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10rpx;
+}
+.guide-but button {
+  margin-top: 10rpx;
+  padding: 0rpx 10rpx;
+}
+
+.guide-but1 {
+  width: 410rpx;
+}
+.guide-buttwo{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 400rpx;
+  margin-top: 40rpx;
+}
+.guide-but2 {
+  width: 200rpx;
+  background-color: red;
+  border: none;
+}
+
+.guide-but3 {
+  width: 200rpx;
+  background-color:rgba(000, 000, 000, 0.3);
+  border: none;
+}
+
+/** 赠送人列表-start**/
+.giveawayfriends-block{
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+.giveawayfriendstyle{
+  margin: 0 auto;
+  background-color: #eee;
+  width: 570rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 15rpx;
+  padding: 10rpx 10rpx 15rpx 10rpx;
+  margin-bottom: 30rpx;
+  height: 230rpx;
+}
+
+.giveaway-desc {
+  width: 100%;
+  color: #333;
+  text-align: center;
+}
+
+.giveaway-log {
+  width: 500rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin: 10rpx auto 0 auto;
+}
+
+.giveaway-log .item {
+  width: 70rpx;
+  /* height: 140rpx; */
+  margin-left: 30rpx;
+}
+
+.giveaway-logimg {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  border: none;
+}
+
+.giveaway-logimg .giveawayfriendbutton {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  border: none;
+}
+.giveawaysetps{
+  width: 80rpx;
+  font-size: 20rpx;
+  text-align: center;
+  color: #666;
+}
+.giveawaybtn{
+  width: 400rpx;
+  line-height: 60rpx;
+  height: 65rpx;
+  z-index:100;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+/** 赠送人列表-end**/
+
+
+.footer-desc-fix {
+  position: fixed;
+  width: 100%;
+  font-size:24rpx;
+  color:#666;
+  text-align: center;
+  bottom: 20rpx;
+}
+
+.box-shadow-red{
+  box-shadow: 2px 2rpx 10rpx #fc5050, 0 -2rpx 10rpx #fc5050, -2px 2rpx 10rpx #fc5050, 0 2rpx 10rpx #fc5050;
+}
+
+.promotions{
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+  background-color: #fcf763;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+}
+.promotions image{
+  width: 64rpx;
+  height: 64rpx;
+  margin-right: 20rpx;
+}
+
+.flush {
+  width: 70rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  margin: 0rpx;
+  text-align: center;
+  background-color: #eee;
+  color:#3cb570;
+  text-decoration: underline;
+  border: none;
+  text-indent: 0;
+  margin-left: 20rpx;
+}
+
+.giveaway-view-btn {
+  font-size: 32rpx;
+  color: #333;
+  text-indent: 30rpx;
+  margin-top: 30rpx;
+  line-height: 40rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10rpx;
+}
+
+.bshkbview{
+  margin-top: 60rpx;
+  text-align: center;
+}
+.bshkbview button{
+  border-radius: 50rpx;
+  width: 550rpx;
+}
+
+.drawiconview{
+  width: 120rpx;
+  height: 180rpx;
+  position: fixed;
+  bottom: 130rpx;
+  right: 10rpx;
+}
+.drawicon{
+  width: 130rpx;
+  height: 130rpx;
+}
+.textdesc{
+  margin-top: 6rpx;
+  width: 130rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #F93B3B;
+}
+
+.mystep-reddoc{
+  position: relative;
+  width: 13px;
+  height: 13px;
+  background-color: red;
+  border-radius: 50%;
+  z-index: 999;
+  left: 604rpx;
+  top:14rpx;
+}

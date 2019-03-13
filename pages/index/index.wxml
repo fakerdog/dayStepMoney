@@ -1,0 +1,107 @@
+<view>
+  <view class='personalInformation'>
+    <view class='avatarsBox'>
+      <open-data class="opendata" type="userAvatarUrl"></open-data>
+    </view>
+
+    <view class='message'>
+      <view class='prices'>
+        <view class='lmCoin'>
+          <text class="lmCointext">{{shuijing}}卡币</text>
+          <button open-type='getUserInfo' class="moneybtn" bindgetuserinfo='toExchangeMoney'>换钱</button>
+          <text class="lmCointext">{{money}}元</text>
+          <button open-type='getUserInfo' class="moneybtn" bindgetuserinfo="towithdetail">提现</button>
+        </view>
+      </view>
+    </view>
+
+    <image class="helpicon" src="../../images/help.png" bindtap='tohelp'></image>
+  </view>
+
+  <view class="stepmodule" style='margin-top:52rpx;'>
+    <view class="modulecontent">
+      <view class="textbutton box-shadow-red" style='border-radius:50%;width:300rpx;height:300rpx;padding:0rpx;' bindtap="unlocktoday">
+        <view class="title" style='margin-top:50rpx;'>今天{{mystep}}步</view>
+        <view>点击兑换<text style="color:red;font-size:36rpx;font-weight:bold;">{{sjNum}}</text>卡币</view>
+        <image class='kabi-img' src='../../images/paobu.png' mode='aspectFit'></image>
+      </view>
+    </view>
+  </view>
+
+  <view class='bshkbview'>
+    <view class="mystep-reddoc"></view>
+    <button class="bshkb" bindtap="unlockAll">
+    您还有<text style="color:red;font-size:32rpx;font-weight:bold;">{{moneyTot}}</text>卡币，点击立刻领取</button>
+  </view>
+
+  <view class="drawiconview">
+    <view bindtap='toDraw' class="drawicon" style="background:url('{{drawicon}}') no-repeat; background-size:100% 100%;"></view>
+    <view class="textdesc">玩就送卡币</view>
+  </view>
+
+  <view class="footer-desc-fix">步数直接换钱的小程序 — 天天步数有赏 </view>
+
+  <view class="draw-with-block">
+    <view class="draw-with"></view>
+    <block wx:if="{{swiperItems}}">
+      <swiper autoplay="true" circular="true" vertical='true' interval="1000">
+        <block wx:for="{{swiperItems}}" wx:index="index" wx:key="key">
+          <swiper-item>
+            <view class="draw-withm">
+              <view style="text-align: center;overflow:hidden;width:60rpx;">{{item.nickname}}</view>
+              <view style="margin-left:10rpx;">提现{{item.money}}元</view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </block>
+  </view>
+
+</view>
+
+<!--首次用户分享-->
+<view class='mask' wx:if='{{newuserflag}}'>
+  <view class="modalDlg" wx:if='{{newuserflag}}'>
+    <image class="backimg" src="{{modalbackimg}}"></image>
+    <block>
+      <view class='regbagtext' wx:if='{{newuserflag}}'>
+        <view class="newuserfontstyle">收到{{newmoney}}元红包</view>
+      </view>
+      <view class='btnimg3' wx:if='{{newuserflag}}'>
+        <button data-newuserflag="true" class="btn3" bindtap="handleNewUserMoney" style="background:url('{{modalbacklineimg}}') no-repeat; background-size:100% 100%;">
+        </button>
+      </view>
+      <view class='popuptext' wx:if='{{newuserflag}}'>
+        <view>领完红包即可提现</view>
+      </view>
+    </block>
+  </view>
+</view>
+
+<!--弹出引导框-->
+<view class='mask' wx:if='{{guide}}'>
+  <view class="guide-all" wx:if='{{guide}}'>
+    <view class='guide-step'>
+      步数换钱说明
+    </view>
+    <view class='guide-run'>
+      <view>您还有约<text style='color:red'>{{guidemoney}}</text>元待领取</view>
+    </view>
+    <view class="guide-but">
+      <button bindtap="closeguide" class='guide-but1'>立刻领取</button>
+      <view class='guide-buttwo'>
+        <button open-type='share' class='guide-but2'>分享好友</button>
+        <button bindtap="tohelpguide" class='guide-but3' style='margin-left:10rpx;'>查看帮助</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!--微信授权-->
+<view class='mask' wx:if="{{showScopeModule}}">
+  <view wx:if="{{showScopeModule}}" class='scopeModule'>
+    <view class="scopeTitle">打开微信运动授权，开始获取步数</view>
+    <view class="scope-confirm" bindtap='myopenSetting'>确定</view>
+  </view>
+</view>

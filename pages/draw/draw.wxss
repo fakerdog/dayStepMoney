@@ -1,0 +1,338 @@
+/* pages/draw/draw.wxss */
+
+page {
+  background-color: #e8e8e8;
+}
+
+.containerpage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  box-sizing: border-box;
+  background-color: #e8e8e8;
+}
+
+/*头部展示-start*/
+
+.withdetail-head {
+  width: 100%;
+  height: 380rpx;
+  background-color: white;
+  text-align: center;
+  /* border-top: 0.5rpx solid #d3d3d3; */
+}
+
+.withdetail-head-img {
+  margin: 0 auto;
+  width: 140rpx;
+  margin-top: 50rpx;
+}
+
+.withdetail-head-ideal {
+  color: #222;
+  font-size: 32rpx;
+  margin: 30rpx 0rpx 20rpx 0rpx;
+  font-weight: bold;
+}
+
+.withdetail-head-money {
+  color: red;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+/*/*头部展示-end*/
+
+/* 转盘 */
+
+.canvas-container {
+  margin: 0 auto;
+  position: relative;
+  width: 500rpx;
+  height: 500rpx;
+  border-radius: 50%;
+  box-shadow: 2px 2rpx 10rpx red, 0 -2rpx 10rpx red, -2px 2rpx 10rpx red, 0 2rpx 10rpx red;
+}
+
+.canvas-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  display: block;
+  width: 500rpx;
+  height: 500rpx;
+  border-radius: inherit;
+  background-clip: padding-box;
+  background-color: white;
+}
+
+.canvas-element {
+  position: relative;
+  z-index: 1;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+}
+
+.canvas-list {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: inherit;
+  height: inherit;
+  z-index: 9999;
+}
+
+.canvas-item {
+  position: absolute;
+  left: 0;
+  top: 0rpx;
+  width: 100%;
+  height: 100%;
+  color: #e4370e;
+  font-size: 26rpx;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.canvas-item-text {
+  position: relative;
+  display: block;
+  padding-top: 40rpx;
+  margin: 0 auto;
+  text-align: center;
+  -webkit-transform-origin: 50% 252rpx;
+  transform-origin: 50% 252rpx;
+}
+
+/* 分隔线 */
+
+.canvas-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: inherit;
+  height: inherit;
+  z-index: 99;
+}
+
+.canvas-litem {
+  position: absolute;
+  left: 246rpx;
+  top: 0rpx;
+  width: 1px;
+  height: 252rpx;
+  background-color: #e44025;
+  overflow: hidden;
+  -webkit-transform-origin: 50% 252rpx;
+  transform-origin: 50% 252rpx;
+}
+
+/**
+* 抽奖按钮
+*/
+
+.canvas-btn {
+  position: absolute;
+  left: 194rpx;
+  top: 194rpx;
+  z-index: 400;
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+  color: #f4e9cc;
+  background-color: #e44025;
+  line-height: 110rpx;
+  text-align: center;
+  font-size: 40rpx;
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
+  text-decoration: none;
+}
+
+.canvas-btn::after {
+  position: absolute;
+  display: block;
+  content: ' ';
+  left: 16rpx;
+  top: -60rpx;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  border-width: 40rpx;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-color: #e44025;
+}
+
+.canvas-btn.disabled {
+  pointer-events: none;
+  background: #b07a7b;
+  color: #ccc;
+}
+
+.canvas-btn.disabled::after {
+  border-bottom-color: #b07a7b;
+}
+
+.mask {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: hidden;
+  background: rgba(000, 000, 000, 0.3);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalDlg {
+  width: 500rpx;
+  height: 653rpx;
+  z-index: 9999;
+  background-color: #fff;
+  border-radius: 36rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button::after {
+  content: "";
+  border: none;
+}
+
+.btnimg {
+  width: 160rpx;
+  height: 160rpx;
+  z-index: 10000;
+  border-radius: 50%;
+  margin-top: 102rpx;
+}
+
+.btnimg2 {
+  width: 160rpx;
+  height: 160rpx;
+  z-index: 10000;
+  border-radius: 50%;
+  margin-top: 88rpx;
+}
+
+.btnimg3 {
+  width: 160rpx;
+  height: 160rpx;
+  z-index: 10000;
+  border-radius: 50%;
+  margin-top: 214rpx;
+}
+
+.btn3 {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  border: none;
+}
+
+.popuptext view {
+  font-size: 24rpx;
+  color: yellow;
+  text-align: center;
+  height: 30rpx;
+}
+
+button::after {
+  content: "";
+  border: none;
+}
+
+.btnimg2 .coverimage {
+  width: 160rpx;
+  height: 160rpx;
+  position: absolute;
+  z-index: 10000;
+}
+
+.btnimg button {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-size: 160rpx 160rpx;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+.backimg {
+  width: 500rpx;
+  height: 653rpx;
+  position: absolute;
+}
+
+.popuptext {
+  width: 450rpx;
+  z-index: 10000;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 56rpx;
+  height: 60rpx;
+}
+
+.regbagtext {
+  width: 100%;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 36rpx;
+  color: yellow;
+  margin-top: 116rpx;
+}
+
+.regbagtext .descp {
+  text-align: center;
+  width: 100%;
+}
+
+.popuptext .covertext {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: yellow;
+  text-align: center;
+  height: 40rpx;
+}
+
+.popupbanner {
+  width: 500rpx;
+  height: 280rpx;
+  z-index: 9999;
+  display: flex;
+}
+
+.popupbanner .coverimage {
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+}
+
+.main {
+  margin-top: 100rpx;
+  padding: 0px;
+}
+
+.main .choujiang-title {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20rpx;
+  font-weight: bold;
+  font-size: 36rpx;
+}
+
+.footer-desc {
+  font-size: 28rpx;
+  text-align: center;
+  margin-top: 60rpx;
+}

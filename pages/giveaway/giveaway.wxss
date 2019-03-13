@@ -1,0 +1,152 @@
+.promotion-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #e8e8e8;
+}
+
+.withdetail-head {
+  height: 320rpx;
+  background-color: white;
+  text-align: center;
+  border-top: 0.5rpx solid #d3d3d3;
+}
+
+.withdetail-head-img {
+  margin: 0 auto;
+  width: 140rpx;
+  margin-top: 50rpx;
+}
+
+.withdetail-head-ideal {
+  color: #222;
+  font-size: 36rpx;
+  margin: 50rpx 0rpx 20rpx 0rpx;
+}
+
+.withdetail-head-money {
+  color: red;
+  font-size: 70rpx;
+  font-weight: bold;
+}
+
+.mystep-desc {
+  width: 100%;
+  margin-left: 50rpx;
+  font-size: 28rpx;
+}
+
+.exchangedesc {
+  margin-top: 20rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #3cb570;
+}
+
+.withdetail-button {
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #f71033;
+  border: none;
+  font-size: 32rpx;
+  padding-right: 22rpx;
+  margin-right: 10rpx;
+}
+
+.withdetail-button.disabled {
+  pointer-events: none;
+  background: #b07a7b;
+  color: #ccc;
+}
+
+.withdetail-button.disabled::after {
+  border-bottom-color: #b07a7b;
+}
+
+.withdetail-text {
+  height: inherit;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.draw-suij {
+  margin-left: 5rpx;
+  font-size: 28rpx;
+}
+
+.withdetail-head-ye {
+  color: #dcdcdc;
+  font-size: 36rpx;
+  margin: 20rpx auto;
+}
+
+.withdetail-desc {
+  font-size: 32rpx;
+  color: #333;
+  text-indent: 30rpx;
+  margin-top: 30rpx;
+  line-height: 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 10rpx;
+}
+
+.withdetail-green {
+  color: #3cb570;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.withdetail-con {
+  background-color: white;
+  height: 80rpx;
+  margin-top: 30rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  text-indent: 32rpx;
+  display: flex;
+  justify-content: left;
+}
+
+.withdetail-text {
+  height: inherit;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.inp {
+  height: inherit;
+  text-align: left;
+  display: inline-block;
+  line-height: 80rpx;
+  flex: 1;
+  margin-left: 10rpx;
+}
+
+.withdetail-head-step {
+  width: 100%;
+  margin-top: 120rpx;
+  font-size: 36rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.withdetail-head-step text {
+  color: red;
+}
+
+.draw-suij {
+  font-size: 36rpx;
+  padding: 0rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 300rpx;
+  margin: 30rpx 0rpx;
+}
+
+.draw-suij::after {
+  border: none;
+}

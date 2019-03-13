@@ -1,0 +1,24 @@
+<view class='promotion-container'>
+    <view class='withdetail-head'>
+      <view class='withdetail-head-img'>
+             <open-data style="border-radius:50%;overflow:hidden;display:block;height:140rpx;width:140rpx"  type="userAvatarUrl"></open-data>
+      </view>
+      <view class='withdetail-head-ideal'>{{shuijing}}水晶</view>
+      <view class='withdetail-head-money'>{{money}}<label class="draw-suij">元</label></view>
+      <view class='withdetail-head-ye'>(账户余额)</view>
+    </view>
+
+    <view class='withdetail-con'>
+      <text class='withdetail-text'>提现金额 ￥</text>
+      <input type="digit" placeholder='请输入提现金额' value='{{allmoney}}' class="inp" bindinput='moneyInput'></input>
+    </view>
+
+    <view class='withdetail-desc'>
+          <view>金额将提现到微信零钱,<label class="withdetail-green" bindtap='allwithdetail'>全部提现</label></view>
+          <view>每次提现必须满1元起</view>
+    </view>
+    <view class='withdetail-bottom'>
+    <button class='withdetail-button {{btnDisabled}}' bindtap='towithdetail'><label style='color:white'>立即提现</label></button>
+    </view>
+
+</view>

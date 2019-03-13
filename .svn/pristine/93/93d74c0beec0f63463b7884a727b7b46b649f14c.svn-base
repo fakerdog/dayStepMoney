@@ -1,0 +1,90 @@
+<view class="container" catchtouchmove="true">
+  <view class="header">
+    <view class="header-left">
+      <open-data class="draw-wxname" type="userNickName"></open-data>
+      <button open-type='getUserInfo' bindgetuserinfo="towithdetail" class="moneybtn" style="background-image:url('{{shareBtnImg}}">{{money}}元</button>
+    </view>
+    <view class="header-right"> {{shuijing}}
+      <label class="draw-suij">水晶</label>
+    </view>
+  </view>
+
+  <view class="main">
+    <view class="canvas-container">
+      <view animation="{{animationData}}" class="canvas-content">
+        <view class="canvas-line">
+          <view class="canvas-litem" wx:for="{{awardsList}}" wx:key="unique" style="-webkit-transform: rotate({{item.lineTurn}});transform: rotate({{item.lineTurn}})"></view>
+        </view>
+        <view class="canvas-list">
+          <view class="canvas-item" wx:for="{{awardsList}}" wx:key="unique">
+            <view class="canvas-item-text" style="-webkit-transform: rotate({{item.turn}});transform: rotate({{item.turn}})">{{item.award}}</view>
+          </view>
+        </view>
+      </view>
+
+      <view bindtap="playReward" class="canvas-btn {{btnDisabled}}">抽奖</view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <view class="draw-with"></view>
+    <block wx:if="{{swiperItems}}">
+      <swiper autoplay="true" circular="true" vertical='true' style="pointer-events: none;height: 60rpx;">
+        <block wx:for="{{swiperItems}}" wx:index="index" wx:key="key">
+          <swiper-item>
+            <view class="draw-withm">{{item.nickname}} 提现 {{item.money}}元</view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </block>
+    <view class="draw-fivesj">每次抽奖消耗5水晶</view>
+  </view>
+</view>
+<view class="indexbg">
+  <image style="width: 100%;height: 100%;" src='../../images/index_bg.png'></image>
+</view>
+
+<view>
+  <!--蒙层-->
+  <view class='mask' bindtap='clickMask' wx:if='{{popuphidden}}'></view>
+  <view class="modalDlg" wx:if='{{popuphidden}}'>
+    <image style="width: 100%;height: 100%;" src='../../images/redenvelope.png'></image>
+  </view>
+  <block wx:if="{{drawmsg=='A'}}">
+    <view class='regbagtext' wx:if='{{popuphidden}}'>
+      <text>抽到随机红包</text>
+    </view>
+    <view class='btnimg' wx:if='{{popuphidden}}'>
+      <image style="width: 100%;height: 100%;" bindtap="toRedBag" src="../../images/open.png"></image>
+    </view>
+  </block>
+  <block wx:if="{{drawmsg=='B' || shareFlag  == 1}}">
+
+    <navigator target="miniProgram" open-type='navigate' app-id="{{item.appId}}" path="{{item.path}}">
+      <!--图片按钮-->
+      <view bindtap='numclick' class='btnimg' wx:if='{{popuphidden}}'>
+        <image style="width: 100%;height: 100%;" src="../../images/play.png"></image>
+      </view>
+    </navigator>
+    <!--底部文字-->
+    <view class='popuptext' wx:if='{{popuphidden}}'>
+      <text>休息一下，玩玩小游戏吧~</text>
+    </view>
+    <!--广告为banner-->
+    <view class='popupbanner' wx:if='{{popuphidden}}'>
+      <image src='{{item.imgUrl}}'></image>
+    </view>
+  </block>
+  <block wx:if="{{shareFlag == 0}}">
+    <view class='regbagtext' wx:if='{{popuphidden}}'>
+      <text>分享群获得大量水晶</text>
+    </view>
+    <view class='btnimg' wx:if='{{popuphidden}}'>
+      <button open-type='share'></button>
+    </view>
+    <view class='popuptext' wx:if='{{popuphidden}}'>
+      <text>点击分享至群可获得大量水晶</text>
+      <text>每天仅限一次</text>
+    </view>
+  </block>
+</view>

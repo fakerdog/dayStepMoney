@@ -1,0 +1,26 @@
+<!--pages/assist/assist.wxml-->
+<view class="pageview">
+  <view class="textview" style='font-weight:bold;'>好友{{nickname}}邀请你助力</view>
+  <view class="textview">就差你一个助力我就可以提现了</view>
+  <view class="textview">点击【帮他助力】，助他提现</view>
+  <view class="btnview">
+    <button disabled='{{disabledflag}}' bindtap='helpunlock'>帮他助力</button>
+    
+  </view>
+
+  <view wx:if="{{newflag}}" class="newclass">
+     <view style='text-align:center;margin-bottom:30rpx;'>恭喜您，获得<text style="color:red;font-weight:bold;">{{newmoney}}</text>元</view>
+     <button class="withdetail-button" bindtap="toindex">立即提现</button>
+  </view>
+
+  <view wx:if="{{!newflag}}" class="newclass">
+     <view style='text-align:center;margin-bottom:30rpx;font-size:36rpx;' wx:if="{{money>0}}">您有<text style="color:red;font-weight:bold;">{{money}}</text>元待提现</view>
+     <view style='text-align:center;margin-bottom:30rpx;font-size:36rpx;' wx:if="{{money<=0}}">您的步数也可换成零钱提现</view>
+     <button class="withdetail-button" bindtap="toindex">立即提现</button>
+  </view>
+
+  <view class="footer-desc-fix">
+    <view class="textview-desc" style='margin-top:50rpx;'>每天的步数浪费掉，还不如换点零花钱</view>
+    <view class="textview-desc">—— 天天步数有赏 小程序</view>
+  </view>
+</view>

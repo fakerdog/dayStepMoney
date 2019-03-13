@@ -1,0 +1,419 @@
+/**
+ * 大转盘抽奖
+ */
+
+const util = require("../../utils/util.js");
+const PromotAdvaceUtil = require("../../utils/PromotAdvaceUtil.js");
+const ShareUtil = require("../../utils/ShareUtil.js");
+const Animation = require("../../utils/animationUtil.js");
+const draw = require("../../utils/drawUtil.js");
+const drawService = require("../../services/drawService.js");
+const app = getApp();
+
+Page({
+
+  //奖品配置
+  awardsConfig: {
+    chance: true,
+    awards: [{
+        'index': 0,
+        'name': '随机红包'
+      },
+      {
+        'index': 1,
+        'name': '幸运奖'
+      },
+      {
+        'index': 2,
+        'name': '10水晶'
+      },
+      {
+        'index': 3,
+        'name': '助力红包'
+      },
+      {
+        'index': 4,
+        'name': '惊喜'
+      },
+      {
+        'index': 5,
+        'name': '1元红包'
+      },
+      {
+        'index': 6,
+        'name': '5元红包'
+      }
+    ],
+  },
+  data: {
+    indexflag: 3,
+    drawmsg: '',
+    shareBtnImg: app.CDN_URL + "money_bg.png?t=1",
+    awardsList: {},
+    animationData: {},
+    btnDisabled: '',
+    drawItem: [],
+    money: Number(0.0000).toFixed(4),
+    drawMoney: Number(0.0000).toFixed(4),
+    shareFlag: '',
+    popuphidden: false,
+    sharePng: app.CDN_URL + 'share.png',
+    dayMoney: Number(0.0000).toFixed(4)
+  },
+  onLoad: function(options) {
+    var that = this;
+    //获取用户提现数据，用于轮动展示
+    drawService.getDrawMoneyUser(res => {
+      var swiperItems = res.data.data;
+      for (var i = 0; i < swiperItems.length; i++) {
+        if (swiperItems[i].nickname.length > 8) {
+          swiperItems[i].nickname = swiperItems[i].nickname.slice(0, 7) + '...';
+        }
+      }
+      that.setData({
+        swiperItems: swiperItems
+      })
+    })
+    that.setData({
+      options: options
+    })
+  },
+  onShow: function() {
+    var that = this;
+    app.getUserInfo(res => {
+      drawService.getDrawGet(res => {
+        if (that.data.options && that.data.options.openid) {
+          drawService.synchroshuijing(that.data.options.openid, res1 => {
+            that.setData({
+              shuijing: Number(res1.data.data.total) - Number(res1.data.data.count),
+              money: Number(res.data.data.money).toFixed(4),
+              dayMoney: Number(res.data.data.dayMoney).toFixed(4),
+              btnDisabled: 'disabled'
+            })
+            wx.showModal({
+              title: '来自熊猫游戏盒子',
+              content: '+'+res1.data.data.count+'水晶',
+              showCancel: false,
+              success: function() {
+                Animation.numberAnimation(Number(res1.data.data.total) - Number(res1.data.data.count), Number(res1.data.data.total), 1, 0, 50, () => {
+                  that.setData({
+                    btnDisabled: ''
+                  })
+                },  res2 => {
+                  that.setData({
+                    shuijing: res2
+                  })
+                })
+                that.setData({
+                  options:{}
+                })
+              },
+            })
+            
+          })
+        } else {
+          this.setData({
+            shuijing: res.data.data.idealMoney,
+            money: Number(res.data.data.money).toFixed(4),
+            dayMoney: Number(res.data.data.dayMoney).toFixed(4)
+          })
+        }
+      })
+    })
+  },
+  onReady: function(e) {
+    this.drawAwardRoundel();
+    //分享
+    wx.showShareMenu({
+      withShareTicket: true
+    });
+  },
+
+  //画抽奖圆盘
+  drawAwardRoundel: function() {
+    var awards = this.awardsConfig.awards;
+    var awardsList = [];
+    var turnNum = 1 / awards.length; // 文字旋转 turn 值
+
+    // 奖项列表
+    for (var i = 0; i < awards.length; i++) {
+      awardsList.push({
+        turn: i * turnNum + 'turn',
+        lineTurn: i * turnNum + turnNum / 2 + 'turn',
+        award: awards[i].name
+      });
+    }
+
+    this.setData({
+      btnDisabled: this.awardsConfig.chance ? '' : 'disabled',
+      awardsList: awardsList
+    });
+  },
+  //发起抽奖
+  playReward: function() {
+    this.setData({
+      shareFlag: 2,
+      drawmsg: ''
+    })
+
+    if (typeof(this.data.shuijing) == 'undefined' || Number(this.data.shuijing) < 5) {
+      //请求到后台验证当前用户是否还有每日分享获得水晶的机会
+      drawService.checkUserShareCount(res => {
+        this.setData({
+          shareFlag: res.data.errcode
+        })
+        //弹出分享窗口，点击分享或者20水晶
+        this.setData({
+          popuphidden: true
+        })
+        drawService.getLuckyDrawBannerLucky(res => {
+          var that = this
+          var banner = res.data.banner;
+          if (banner) {
+            for (var i = 0; i < banner.length; i++) {
+              var imgUrl = app.CDN_URL + banner[i].imgUrl;
+              banner[i].imgUrl = imgUrl;
+            }
+            var bannerindex = parseInt(banner.length * Math.random());
+            that.setData({
+              item: banner[bannerindex]
+            })
+          }
+        })
+      })
+    } else {
+      //先转
+      Animation.rotateAnimation(this.runDeg + 360, 700, 'ease-in', (res, runDeg) => {
+        this.setData({
+          animationData: res,
+          btnDisabled: 'disabled'
+        });
+        this.runDeg = runDeg;
+      });
+      var interval = setInterval(() => {
+        Animation.rotateAnimation(this.runDeg + 360, 700, 'linear', (res, runDeg) => {
+          this.setData({
+            animationData: res,
+            btnDisabled: 'disabled'
+          });
+          this.runDeg = runDeg;
+        });
+      }, 700);
+      this.setData({
+        shuijing: this.data.shuijing - 5
+      })
+      if (this.data.drawItem.length == 0) { //判断随机的数组中是否为空
+        draw.getRandomArrayElements(res => {
+          this.data.drawItem = res;
+        })
+      }
+      var drawType = this.data.drawItem.pop(); //取出最后一个下标的值
+      if (Number(this.data.dayMoney) == Number(0.0000)) { //用户第一次进来必须是随机红包
+        drawType = 'A';
+        this.setData({
+          dayMoney: Number(0.1111)
+        })
+      }
+      drawService.goDraw(drawType, res => {
+        var drawflag = res.data.data.flag;
+        if (drawflag) {
+          this.setData({
+            drawmsg: res.data.message
+          })
+          if (this.data.drawmsg == "A") { //返回随机红包
+            this.setData({
+                drawMoney: res.data.data.drawMoney //返回的红包金额
+              }),
+              this.data.indexflag = 0;
+          } else if (this.data.drawmsg == "B") { //幸运奖
+            this.data.indexflag = 1;
+            //测试数字动态,以下应该获得水晶或者红包时触发，
+          } else if (this.data.drawmsg == "C") { //水晶
+            this.data.indexflag = 2;
+          }
+        } else { //今日获得随机红包已经超过0.4000元，提示幸运奖
+          var sjmy = res.data.data.sjmy;
+          if (sjmy) {
+            this.setData({
+              drawmsg: "B"
+            })
+            this.data.indexflag = 1;
+          } else {
+            var sharef = res.data.data.sharef;
+            if (Number(sharef) == 0) {
+              this.setData({
+                shareFlag: res.data.errcode
+              })
+              //弹出分享窗口，点击分享或者20水晶
+              this.setData({
+                popuphidden: true
+              })
+            } else {
+              this.setData({
+                shareFlag: res.data.errcode
+              })
+              //弹出分享窗口，点击分享或者20水晶
+              this.setData({
+                popuphidden: true
+              })
+              drawService.getLuckyDrawBanner(res => {
+                var that = this
+                var banner = res.data.banner;
+                if (banner) {
+                  for (var i = 0; i < banner.length; i++) {
+                    var imgUrl = app.CDN_URL + banner[i].imgUrl;
+                    banner[i].imgUrl = imgUrl;
+                  }
+                  var bannerindex = parseInt(banner.length * Math.random());
+                  that.setData({
+                    item: banner[bannerindex]
+                  })
+                }
+              })
+            }
+          }
+        }
+        setTimeout(() => {
+          this.stopDraw(interval, this.data.indexflag);
+        }, 1000)
+      }, () => {
+        this.setData({
+          btnDisabled: ''
+        });
+        clearInterval(interval);
+      })
+
+    }
+  },
+
+  //抽奖盘转动
+  stopDraw: function(interval, awardIndex) {
+    clearInterval(interval);
+    var awardIndex = awardIndex; //数据来自请求返回的结果res
+    var runNum = 6; //圈数
+    var duration = 2000; //时长
+    Animation.rotateAnimation(this.runDeg + (360 - this.runDeg % 360) + (360 * runNum - awardIndex * (360 / this.awardsConfig.awards.length)), duration, 'ease', (res, runDeg) => {
+      this.setData({
+        animationData: res
+      });
+      this.runDeg = runDeg;
+      setTimeout(() => {
+        if (awardIndex == 2) {
+          Animation.numberAnimation(this.data.shuijing, Number(this.data.shuijing) + Number(10), 1, 0, 100, () => {
+            this.setData({
+              btnDisabled: ''
+            })
+          }, res => {
+            this.setData({
+              shuijing: res,
+            })
+          })
+        } else {
+          if (awardIndex == 0) { //随机红包的弹窗
+            this.setData({
+              popuphidden: true,
+              btnDisabled: ''
+            })
+          } else if (awardIndex == 1) { //幸运奖的弹窗
+            this.setData({
+              popuphidden: true,
+              btnDisabled: ''
+            })
+            drawService.getLuckyDrawBanner(res => {
+              var banner = res.data.banner;
+              if (banner) {
+                for (var i = 0; i < banner.length; i++) {
+                  var imgUrl = app.CDN_URL + banner[i].imgUrl;
+                  banner[i].imgUrl = imgUrl;
+                }
+                var bannerindex = parseInt(banner.length * Math.random());
+                this.setData({
+                  item: banner[bannerindex]
+                })
+              }
+            })
+          }
+        }
+      }, duration + 100)
+    })
+  },
+
+  //统计广告点击次数
+  numclick: function() {
+    var appid = this.data.item.bannerId;
+    var appname = this.data.item.title;
+    drawService.updateStatisCount(appname, appid, res => {
+      this.setData({
+        popuphidden: false
+      })
+    })
+  },
+
+  //点击蒙层，隐藏弹出框
+  clickMask: function() {
+    this.setData({
+      popuphidden: false
+    })
+  },
+
+  //用户分享
+  onShareAppMessage: function() {
+    var that = this;
+    return {
+      title: '红包抽抽抽，100%中现金，可直接提现哟！',
+      path: '/pages/index/index',
+      imageUrl: app.CDN_URL + 'share_tran.png',
+      success: function() {
+        drawService.checkUserShareCount(res => {
+          var shareflag = res.data.errcode;
+          if (shareflag == 0) {
+            drawService.updateUserShareCount(res => {
+              var newsj = Number(that.data.shuijing) + Number(20);
+              Animation.numberAnimation(that.data.shuijing, newsj, 1, 0, 100, () => {
+                that.setData({
+                  btnDisabled: ''
+                })
+              }, res => {
+                that.setData({
+                  shuijing: res
+                })
+              })
+              that.setData({
+                popuphidden: false
+              })
+              wx.showModal({
+                title: '提示',
+                content: '分享成功，奖励20水晶',
+                showCancel: false
+              })
+            })
+          }
+        })
+
+      }
+    }
+
+  },
+
+  //去红包页面
+  toRedBag: function() {
+    this.setData({
+      popuphidden: false
+    })
+    wx.navigateTo({
+      url: '/pages/redBag/redBag?money=' + Number(this.data.drawMoney).toFixed(4),
+    })
+  },
+
+  //提现授权
+  towithdetail: function(res) {
+    if (typeof(res.detail.userInfo) == "undefined") { //授权失败
+    } else { //授权成功
+      drawService.toDrawUser(res.detail.userInfo, res => {
+        wx.navigateTo({
+          url: '/pages/withdetail/withdetail',
+        })
+      })
+    }
+  },
+})

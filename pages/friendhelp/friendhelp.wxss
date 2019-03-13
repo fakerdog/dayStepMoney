@@ -1,0 +1,73 @@
+/* pages/assist/assist.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+.pageview {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50rpx 0;
+  box-sizing: border-box;
+} 
+.textview{
+  font-size: 32rpx;
+  height: 70rpx;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  margin-bottom: 20rpx;
+}
+
+.btnview{
+  margin-top: 8rpx;
+  display: flex;
+  height: 100rpx;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.btnview button{
+  font-size: 32rpx;
+  width: 280rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border: none;
+}
+
+.withdetail-button{
+  text-align: center;
+  background-color: #f71033;
+  border: none;
+  font-size: 32rpx;
+  width: 280rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.textview-desc{
+  text-align: center;
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.footer-desc-fix {
+  position: fixed;
+  width: 100%;
+  font-size:24rpx;
+  color:#666;
+  text-align: center;
+  bottom: 20rpx;
+}
+
+.newclass{
+  margin-top:100rpx;
+}

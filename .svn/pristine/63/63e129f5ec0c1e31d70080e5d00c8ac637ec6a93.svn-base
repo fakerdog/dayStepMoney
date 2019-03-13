@@ -1,0 +1,468 @@
+/**抽奖js */
+
+const app = getApp();
+
+//获取用户基本信息（水晶和钱）
+function getDrawGet(cb) {
+  wx.request({
+    url: app.HTTP_SERVER + 'draw/LuckyDraw/getDrawGet.htm',
+    method: "POST",
+    data: {},
+    header: {
+      'appid': app.APP_ID,
+      'sessionkey': app.globalData.sessionkey,
+      'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    success: function (res) {
+      if (typeof cb === "function") {
+        cb(res);
+
+      }
+    },
+    fail: function (res) {
+      //console.log("uploadLocalCacheData failure");
+    }
+  });
+}
+
+//check用户是否有每日分享次数
+function checkUserShareCount(cb) {
+  wx.request({
+    url: app.HTTP_SERVER + 'draw/LuckyDraw/checkUserShareCount.htm',
+    method: "POST",
+    data: {},
+    header: {
+      'appid': app.APP_ID,
+      'sessionkey': app.globalData.sessionkey,
+      'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    success: function (res) {
+      if (typeof cb === "function") {
+        cb(res);
+
+      }
+    },
+    fail: function (res) {
+      //console.log("uploadLocalCacheData failure");
+    }
+  });
+}
+
+//点击分享 更新用户的分享次数
+function updateUserShareCount(cb) {
+  wx.request({
+    url: app.HTTP_SERVER + 'draw/LuckyDraw/toUpdDrawUserShareCount.htm',
+    method: "POST",
+    data: {},
+    header: {
+      'appid': app.APP_ID,
+      'sessionkey': app.globalData.sessionkey,
+      'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    success: function (res) {
+      if (typeof cb === "function") {
+        cb(res);
+
+      }
+    },
+    fail: function (res) {
+      //console.log("uploadLocalCacheData failure");
+    }
+  });
+}
+
+//抽奖
+function goDraw(drawType, cb, cb2) {
+  wx.login({
+    success: res => {
+      //从开发服务器获取openid
+      var code = res.code;
+      wx.request({
+        url: app.HTTP_SERVER + 'draw/LuckyDraw/goDraw.htm',
+        method: "POST",
+        data: {
+          drawType: drawType,
+          jscode: code
+        },
+        header: {
+          'appid': app.APP_ID,
+          'sessionkey': app.globalData.sessionkey,
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success: function (res) {
+          if (typeof cb === "function") {
+            cb(res);
+
+          }
+        },
+        fail: function (e) {
+          console.log(22)
+          cb2();
+        }
+      });
+    }
+  })
+}
+
+//插入红包表
+function instDrawGetDetailBackNum(money, cb) {
+  wx.login({
+    success: res => {
+      //从开发服务器获取openid
+      var code = res.code;
+      wx.request({
+        url: app.HTTP_SERVER + 'draw/LuckyDraw/instDrawGetDetailBackNum.htm',
+        method: "POST",
+        data: {
+          money: money,
+          jscode: code
+        },
+        header: {
+          'appid': app.APP_ID,
+          'sessionkey': app.globalData.sessionkey,
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success: function (res) {
+          if (typeof cb === "function") {
+            cb(res);
+
+          }
+        },
+        fail: function (res) {
+          //console.log("uploadLocalCacheData failure");
+        }
+      });
+    }
+  })
+}
+
+//用户授权录入信息
+function toDrawUser(userInfo, cb) {
+  wx.request({
+    url: app.HTTP_SERVER + 'draw/LuckyDraw/toDrawUser.htm',
+    method: "POST",
+    data: {
+      nickname: userInfo.nickName,
+      avatarurl: userInfo.avatarUrl,
+      sex: userInfo.gender,
+      country: userInfo.country,
+      province: userInfo.province,
+      city: userInfo.city
+    },
+    header: {
+      'appid': app.APP_ID,
+      'sessionkey': app.globalData.sessionkey,
+      'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    success: function (res) {
+      if (typeof cb === "function") {
+        cb(res);
+
+      }
+    },
+    fail: function (res) {
+      //console.log("uploadLocalCacheData failure");
+    }
+  });
+}
+function drawCashForMoeny(amount, cb, cb2){
+  wx.showLoading({
+    title: '提现处理中...',
+  });
+  wx.login({
+    success: res => {
+      //从开发服务器获取openid
+      var code = res.code;
+      wx.request({
+        url: app.HTTP_SERVER + 'draw/with/drawCashForMoeny.htm',
+        method: "POST",
+        data: {
+          amount: amount,
+          jscode: code
+        },
+        header: {
+          'appid': app.APP_ID,
+          'sessionkey': app.globalData.sessionkey,
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success: function (res) {
+          if (typeof cb === "function") {
+            cb(res);
+
+          }
+        },
+        fail: function (res) {
+          cb2()
+        },
+        complete: function (res) {
+          wx.hideLoading();
+        }
+      });
+    }
+  })
+}
+
+//后台实现提现接口
+function drawCash(amount, cb, cb2) {
+  wx.showLoading({
+    title: '提现处理中...',
+  });
+  wx.login({
+    success: res => {
+      //从开发服务器获取openid
+      var code = res.code;
+      wx.request({
+        url: app.HTTP_SERVER + 'draw/with/drawCash.htm',
+        method: "POST",
+        data: {
+          amount: amount,
+          jscode: code
+        },
+        header: {
+          'appid': app.APP_ID,
+          'sessionkey': app.globalData.sessionkey,
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success: function (res) {
+          if (typeof cb === "function") {
+            cb(res);
+
+          }
+        },
+        fail: function (res) {
+          cb2()
+        },
+        complete: function (res) {
+          wx.hideLoading();
+        }
+      });
+    }
+  })
+
+}
+
+//获取banner
+function getLuckyDrawBanner(cb) {
+  wx.showLoading({
+    title: '数据加载中...',
+    mask:	true	
+  });
+  var flag = false;
+  wx.request({
+    url: app.CDN_URL + 'luckydrawbannerjson-v1.json',
+    data: {},
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success: function (res) {
+      if (typeof cb === "function") {
+        cb(res);
+      }
+    },
+    fail: function (res) { },
+    complete: function (res) {
+      wx.hideLoading();
+    }
+  });
+}
+
+//获取幸运奖展示需要的banner
+function getLuckyDrawBannerLucky(cb) {
+  wx.showLoading({
+    title: '数据加载中...',
+  });
+  var flag = false;
+  wx.request({
+    url: app.CDN_URL + 'luckydrawbannerjson-Cv1.json',
+    data: {},
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success: function (res) {
+      if (typeof cb === "function") {
+        cb(res);
+      }
+    },
+    fail: function (res) { },
+    complete: function (res) {
+      wx.hideLoading();
+    }
+  });
+}
+
+//获取20个头像
+function getLuckyDrawHead(cb) {
+  wx.showLoading({
+    title: '数据加载中...',
+  });
+  var flag = false;
+  wx.request({
+    url: app.CDN_URL + 'luckydrawheadjson-v1.json',
+    data: {},
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success: function (res) {
+      if (typeof cb === "function") {
+        cb(res);
+      }
+    },
+    fail: function (res) { },
+    complete: function (res) {
+      wx.hideLoading();
+    }
+  });
+}
+
+//统计广告后台点击次数
+function updateStatisCount(appname, appid, cb) {
+  wx.request({
+    url: app.HTTP_SERVER + 'app/commonrest/submitStatis.htm',
+    method: "POST",
+    data: {
+      appname: appname,
+      appid: appid,
+      sharetype: 2001,
+      fromappid: app.APP_ID
+    },
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    success: function (res) {
+      if (typeof cb === "function") {
+        cb(res);
+      }
+    },
+    fail: function (res) { },
+    complete: function (res) {
+      wx.hideLoading();
+    }
+  })
+}
+
+
+//统计广告后台有效点击次数
+function updateStatisEffectiveCount(appname, appid, cb) {
+  wx.request({
+    url: app.HTTP_SERVER + 'app/commonrest/submitStatisEffective.htm',
+    method: "POST",
+    data: {
+      appname: appname,
+      appid: appid,
+      sharetype: 2001,
+      fromappid: app.APP_ID
+    },
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    success: function (res) {
+      if (typeof cb === "function") {
+        cb(res);
+      }
+    },
+    fail: function (res) { },
+    complete: function (res) {
+      wx.hideLoading();
+    }
+  })
+}
+
+//获取中奖用户提现数据
+function getDrawMoneyUser(cb) {
+  wx.request({
+    url: app.HTTP_SERVER + 'draw/LuckyDraw/getNewDrawDetail.htm',
+    method: 'POST',
+    data: {},
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success: function (res) {
+      if (typeof cb === "function") {
+        cb(res);
+      }
+    },
+    fail: function (res) { },
+    complete: function (res) {
+
+    }
+  })
+}
+//同步接口 从熊猫盒子点击进来转盘抽个奖 同步水晶
+function synchroshuijing(pandaopenid, cb) {
+  wx.login({
+    success: res => {
+      //从开发服务器获取openid
+      var code = res.code;
+      wx.request({
+        url: app.HTTP_SERVER + 'draw/LuckyDraw/updateCryCount.htm',
+        method: "POST",
+        data: {
+          pandaopenid: pandaopenid,
+          jscode: code
+        },
+        header: {
+          'appid': app.APP_ID,
+          'sessionkey': app.globalData.sessionkey,
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+        },
+        success: function (res) {
+          if (typeof cb === "function") {
+            cb(res);
+
+          }
+        },
+        fail: function (res) {
+        },
+        complete: function (res) {
+        }
+      });
+    }
+  })
+
+}
+
+//领取系统赠送现金红包
+function getSysMoney(money, cb) {
+  wx.request({
+    url: app.HTTP_SERVER + 'draw/LuckyDraw/getSysMoney.htm',
+    method: "POST",
+    data: {
+      money: money
+    },
+    header: {
+      'appid': app.APP_ID,
+      'sessionkey': app.globalData.sessionkey,
+      'content-type': 'application/x-www-form-urlencoded' // 默认值
+    },
+    success: function (res) {
+      if (typeof cb === "function") {
+        cb(res);
+
+      }
+    },
+    fail: function (res) {
+    },
+    complete: function (res) {
+      wx.hideLoading();
+    }
+  });
+}
+
+module.exports = {
+  getDrawGet: getDrawGet,
+  checkUserShareCount: checkUserShareCount,
+  updateUserShareCount: updateUserShareCount,
+  goDraw: goDraw,
+  instDrawGetDetailBackNum: instDrawGetDetailBackNum,
+  getLuckyDrawBanner: getLuckyDrawBanner,
+  getLuckyDrawHead: getLuckyDrawHead,
+  toDrawUser: toDrawUser,
+  updateStatisCount: updateStatisCount,
+  drawCash: drawCash,
+  getDrawMoneyUser: getDrawMoneyUser,
+  getLuckyDrawBannerLucky: getLuckyDrawBannerLucky,
+  synchroshuijing: synchroshuijing,
+  getSysMoney: getSysMoney,
+  updateStatisEffectiveCount: updateStatisEffectiveCount,
+  drawCashForMoeny: drawCashForMoeny
+}

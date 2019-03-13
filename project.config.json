@@ -1,0 +1,89 @@
+{
+	"description": "抽奖(20181121)",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"uglifyFileName": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.95",
+	"appid": "wxa8d04da78e0b0fdb",
+	"projectname": "luckyDraw",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 7,
+			"list": [
+				{
+					"id": -1,
+					"name": "unlock",
+					"pathName": "pages/unlockedstep/unlockedstep",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "record",
+					"pathName": "pages/record/record",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "assist",
+					"pathName": "pages/assist/assist",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "draw",
+					"pathName": "pages/draw/draw",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "giveaway",
+					"pathName": "pages/giveaway/giveaway",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "12312",
+					"pathName": "pages/assist/assist",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pub",
+					"pathName": "pages/pubwithdetail/pubwithdetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "wqe",
+					"pathName": "pages/withdetail/withdetail"
+				}
+			]
+		}
+	}
+}

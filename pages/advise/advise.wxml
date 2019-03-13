@@ -1,0 +1,16 @@
+
+<!--pages/advise/advise.wxml-->
+<form class="advisecontainer-form" bindsubmit="formSubmit">
+  <text>问题反馈或建议：</text>
+  <view class="adviseview">
+    <textarea class="advisecontent" placeholder='请输入建议' bindinput='contentinput' maxlength="200" name="text"></textarea>
+  </view>
+
+  <text>您的联系方式：</text>
+  <view class="form-item" style="padding-left:0;">
+    <input class="form-item-input" placeholder='请输入微信号或手机号' maxlength='20' name="wxid"></input>
+  </view>
+
+  <button class="submit-save-btn" form-type="submit" type='primary' hover-class='btn-hover'>提交</button>
+  
+</form>

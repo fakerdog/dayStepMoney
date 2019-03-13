@@ -1,0 +1,32 @@
+
+<view class='redbag-conbanner'>
+<block wx:if="{{drawbanner}}">
+  <view class="redbag-banner" bindtap='numclick'>
+      <navigator target="miniProgram" open-type='navigate' app-id="{{drawbanner.appId}}" path="{{drawbanner.path}}">
+             <image src="{{drawbanner.imgUrl}}" />  
+      </navigator>
+  </view>
+  <view class='redbag-bantext'>{{drawbanner.desc}}</view>
+</block>
+</view>
+<view class="redbag-money">
+  <view class="header-right"> {{money}}<label class="draw-suij">元</label></view>
+  <view class="redbag-save">已存入账户</view>
+</view>
+<view class='redbag-log'>
+        <view class="redbag-logimg">
+            <view class='redbag-me'>
+            <open-data style="border-radius:50%;overflow:hidden;display:block;height:80rpx;width:80rpx"  type="userAvatarUrl"></open-data>
+            </view>
+        </view>
+        <block wx:if="{{drawhead}}">
+          <view wx:for='{{drawhead}}' wx:index="index" wx:key="key"  class="item">
+                  <view class="redbag-logimg">
+                      <image  src='{{item.imgUrl}}'/>
+                  </view>
+         </view>
+        </block> 
+</view>
+<view class='redbag-receive'>100000+人领取</view>
+<view class='promotion-container'>
+</view>
